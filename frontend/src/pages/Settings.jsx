@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
+import { useTheme } from "../contexts/ThemeContext";
 import {
   Settings as SettingsIcon,
   Sliders,
@@ -12,11 +13,14 @@ import {
   Trash2,
   FileCode,
   Sparkles,
-  Info
+  Info,
+  Sun,
+  Moon
 } from "lucide-react";
 
 export default function Settings() {
   const { user } = useAuth();
+  const { theme, setTheme } = useTheme();
 
   // Model & Agent Settings
   const [selectedModel, setSelectedModel] = useState("gemini-1.5-pro");
@@ -101,6 +105,68 @@ export default function Settings() {
                 {user?.email || "demo@codemind.ai"}
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Appearance & Theme Section */}
+        <div className="bg-surface-elevated border border-border-base rounded-lg p-5">
+          <h2 className="text-xs font-semibold text-content-primary uppercase tracking-wider mb-2 flex items-center gap-2">
+            <Sun className="w-3.5 h-3.5 text-accent-primary" />
+            Interface Theme & Appearance
+          </h2>
+          <p className="text-xs text-content-muted mb-4">
+            Personalize your workspace palette. Choose between Nature-Inspired Bright Light mode or Nocturnal Forest Dark mode.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button
+              type="button"
+              onClick={() => setTheme("light")}
+              className={`p-4 rounded-xl border text-left flex items-start gap-3.5 transition-all ${
+                theme === "light"
+                  ? "border-emerald-600 bg-emerald-500/10 shadow-sm ring-2 ring-emerald-500/20"
+                  : "border-border-base bg-surface-base hover:border-border-hover"
+              }`}
+            >
+              <div className="p-2.5 rounded-lg bg-emerald-100 text-emerald-800 shrink-0">
+                <Sun className="w-5 h-5" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-content-primary">Nature Bright (Light)</span>
+                  {theme === "light" && (
+                    <span className="px-2 py-0.5 rounded-full text-3xs font-semibold bg-emerald-600 text-white">Active</span>
+                  )}
+                </div>
+                <p className="text-2xs text-content-muted mt-1 leading-relaxed">
+                  Crisp, sunny botanical theme with high-contrast emerald and sage accents. Perfect for bright ambient environments.
+                </p>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setTheme("dark")}
+              className={`p-4 rounded-xl border text-left flex items-start gap-3.5 transition-all ${
+                theme === "dark"
+                  ? "border-emerald-500 bg-emerald-500/10 shadow-sm ring-2 ring-emerald-500/20"
+                  : "border-border-base bg-surface-base hover:border-border-hover"
+              }`}
+            >
+              <div className="p-2.5 rounded-lg bg-zinc-800 text-emerald-400 shrink-0">
+                <Moon className="w-5 h-5" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-content-primary">Nocturnal Forest (Dark)</span>
+                  {theme === "dark" && (
+                    <span className="px-2 py-0.5 rounded-full text-3xs font-semibold bg-emerald-600 text-white">Active</span>
+                  )}
+                </div>
+                <p className="text-2xs text-content-muted mt-1 leading-relaxed">
+                  Deep obsidian and slate palette with bioluminescent leaf green highlights. Ideal for night-time development.
+                </p>
+              </div>
+            </button>
           </div>
         </div>
 

@@ -66,6 +66,24 @@ export const SemanticSearch = () => {
     }
   };
 
+  const sampleQueries = [
+    "Where is JWT authentication and password hashing implemented?",
+    "How does payment processing interact with user accounts?",
+    "Show user registration and validation logic",
+    "Where is PBKDF2 salt generation handled?"
+  ];
+
+  React.useEffect(() => {
+    handleSearch();
+  }, [pid]);
+
+  const runSampleQuery = (q) => {
+    setQuery(q);
+    setTimeout(() => {
+      handleSearch();
+    }, 50);
+  };
+
   return (
     <div className="p-8 max-w-6xl mx-auto space-y-6 animate-in fade-in duration-200">
       <div>
@@ -119,6 +137,20 @@ export const SemanticSearch = () => {
           <span className="text-[11px] font-mono">
             {results.length > 0 ? `${results.length} relevant chunks retrieved` : "Ready to query"}
           </span>
+        </div>
+
+        {/* Suggested Quick Queries */}
+        <div className="flex flex-wrap gap-2 pt-1">
+          {sampleQueries.map((sq, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => runSampleQuery(sq)}
+              className="text-[11px] px-3 py-1 rounded-full bg-accent/40 hover:bg-accent border border-border text-muted-foreground hover:text-foreground transition-all"
+            >
+              {sq}
+            </button>
+          ))}
         </div>
       </form>
 

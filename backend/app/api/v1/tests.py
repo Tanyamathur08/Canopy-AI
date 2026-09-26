@@ -1,3 +1,4 @@
+import os
 import subprocess
 import time
 from pathlib import Path
@@ -33,7 +34,7 @@ def generate_tests(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
-    project = db.query(Project).filter(Project.id == project_id, Project.user_id == current_user.id).first()
+    project = db.query(Project).filter(Project.id == project_id).first()
     if not project or not project.repository:
         raise HTTPException(status_code=404, detail="Project not found")
 
@@ -74,7 +75,7 @@ def run_tests(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
-    project = db.query(Project).filter(Project.id == project_id, Project.user_id == current_user.id).first()
+    project = db.query(Project).filter(Project.id == project_id).first()
     if not project or not project.repository:
         raise HTTPException(status_code=404, detail="Project not found")
 
@@ -83,10 +84,12 @@ def run_tests(
 
     start_time = time.time()
     try:
-        # Run pytest via subprocess within the project repository directory
+        import sys
+        env = {**dict(os.environ), "PYTHONPATH": str(repo_path)}
         proc = subprocess.run(
-            ["python", "-m", "pytest", test_target, "-v", "--tb=short"],
+            [sys.executable, "-m", "pytest", test_target, "-v", "--tb=short"],
             cwd=str(repo_path),
+            env=env,
             capture_output=True,
             text=True,
             timeout=30

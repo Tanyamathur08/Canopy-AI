@@ -16,10 +16,12 @@ import {
   Activity
 } from "lucide-react";
 import { useProject } from "../contexts/ProjectContext";
+import { useTheme } from "../contexts/ThemeContext";
 import { api } from "../api/client";
 
 export const ProjectWorkspace = () => {
   const { activeProject, activeFilePath, setActiveFilePath } = useProject();
+  const { theme } = useTheme();
   const [fileTree, setFileTree] = useState(null);
   const [fileContent, setFileContent] = useState("");
   const [currentFileLang, setCurrentFileLang] = useState("python");
@@ -286,7 +288,7 @@ class PaymentService:
             height="100%"
             language={currentFileLang}
             value={fileContent}
-            theme="light"
+            theme={theme === "dark" ? "vs-dark" : "light"}
             options={{
               fontSize: 13,
               fontFamily: "JetBrains Mono, Menlo, Monaco, Courier New, monospace",

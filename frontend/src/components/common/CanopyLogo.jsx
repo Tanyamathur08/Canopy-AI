@@ -80,7 +80,7 @@ export const CanopyLogo = ({ size = "md", showText = true, className = "" }) => 
             </span>
           </div>
           <span className={`text-content-muted font-medium tracking-tight ${dim.sub}`}>
-            Botanical Codebase Intelligence
+            AI Codebase Intelligence
           </span>
         </div>
       )}

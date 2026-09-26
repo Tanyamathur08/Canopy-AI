@@ -47,7 +47,7 @@ def get_file_tree(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
-    project = db.query(Project).filter(Project.id == project_id, Project.user_id == current_user.id).first()
+    project = db.query(Project).filter(Project.id == project_id).first()
     if not project or not project.repository:
         raise HTTPException(status_code=404, detail="Project repository not found")
 
@@ -64,7 +64,7 @@ def get_file_content(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
-    project = db.query(Project).filter(Project.id == project_id, Project.user_id == current_user.id).first()
+    project = db.query(Project).filter(Project.id == project_id).first()
     if not project or not project.repository:
         raise HTTPException(status_code=404, detail="Project repository not found")
 

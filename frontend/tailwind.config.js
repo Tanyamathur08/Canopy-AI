@@ -10,23 +10,23 @@ export default {
       colors: {
         border: {
           DEFAULT: "hsl(var(--border))",
-          base: "#D8E4D9",
-          hover: "#BFD3C0",
+          base: "var(--border-base, #D8E4D9)",
+          hover: "var(--border-hover, #BFD3C0)",
         },
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         surface: {
-          base: "#F7FAF7",
-          elevated: "#FFFFFF",
-          subtle: "#EFF5EF",
-          card: "#FFFFFF",
+          base: "var(--surface-base, #F7FAF7)",
+          elevated: "var(--surface-elevated, #FFFFFF)",
+          subtle: "var(--surface-subtle, #EFF5EF)",
+          card: "var(--surface-elevated, #FFFFFF)",
         },
         content: {
-          primary: "#142318",
-          secondary: "#2E4735",
-          muted: "#5E7764",
+          primary: "var(--content-primary, #142318)",
+          secondary: "var(--content-secondary, #2E4735)",
+          muted: "var(--content-muted, #5E7764)",
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",

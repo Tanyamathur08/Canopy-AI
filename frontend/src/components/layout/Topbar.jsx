@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Search, Command, ChevronDown, Check, FolderGit2 } from "lucide-react";
+import { Search, Command, ChevronDown, Check, FolderGit2, Sun, Moon } from "lucide-react";
 import { useProject } from "../../contexts/ProjectContext";
 import { useAuth } from "../../contexts/AuthContext";
+import { useTheme } from "../../contexts/ThemeContext";
 import { CommandPalette } from "./CommandPalette";
 
 export const Topbar = () => {
   const { projects, activeProject, setActiveProject } = useProject();
   const { user } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -73,12 +75,26 @@ export const Topbar = () => {
           </button>
         </div>
 
-        {/* Right: Operational Status & Avatar */}
+        {/* Right: Operational Status, Theme Toggle & Avatar */}
         <div className="flex items-center gap-3">
-          <div className="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-semibold">
+          <div className="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-[11px] font-semibold">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
             <span>Canopy RAG & Graph: Online</span>
           </div>
+
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            className="p-1.5 rounded-lg border border-border bg-surface-elevated hover:bg-surface-subtle text-content-secondary hover:text-content-primary transition-all shadow-2xs"
+            title={theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? (
+              <Moon className="w-4 h-4 text-emerald-700" />
+            ) : (
+              <Sun className="w-4 h-4 text-amber-400" />
+            )}
+          </button>
 
           <div className="flex items-center gap-2 pl-2 border-l border-border/80">
             <div className="w-7 h-7 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-xs font-semibold text-primary">

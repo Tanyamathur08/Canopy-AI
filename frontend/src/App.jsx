@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { ThemeProvider } from "./contexts/ThemeContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProjectProvider } from "./contexts/ProjectContext";
 
@@ -29,8 +30,9 @@ import Settings from "./pages/Settings";
 export default function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <ProjectProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <ProjectProvider>
           <Routes>
             {/* Public Landing Page */}
             <Route path="/" element={<Landing />} />
@@ -67,6 +69,7 @@ export default function App() {
           </Routes>
         </ProjectProvider>
       </AuthProvider>
-    </BrowserRouter>
+    </ThemeProvider>
+  </BrowserRouter>
   );
 }

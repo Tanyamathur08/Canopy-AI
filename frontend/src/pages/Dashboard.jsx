@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   FolderGit2,
@@ -10,14 +10,17 @@ import {
   Plus,
   ExternalLink,
   CheckCircle2,
-  Server
+  Server,
+  UploadCloud
 } from "lucide-react";
 import { useAuth } from "../contexts/AuthContext";
 import { useProject } from "../contexts/ProjectContext";
+import { UploadProjectModal } from "../components/projects/UploadProjectModal";
 
 export const Dashboard = () => {
   const { user } = useAuth();
   const { projects, activeProject, setActiveProject } = useProject();
+  const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const getGreeting = () => {
@@ -43,16 +46,23 @@ export const Dashboard = () => {
         </div>
 
         <div className="flex items-center gap-3">
+          <button
+            onClick={() => setUploadModalOpen(true)}
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-emerald-300 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 text-xs font-semibold shadow-2xs transition-all"
+          >
+            <UploadCloud className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <span>Upload Project</span>
+          </button>
           <Link
             to="/projects"
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-semibold shadow-sm transition-all"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary hover:bg-accent-hover text-white text-xs font-semibold shadow-sm transition-all"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>New Project</span>
           </Link>
           <Link
             to={`/projects/${pid}/code`}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border bg-card/80 hover:bg-accent/40 text-foreground text-xs font-semibold shadow-sm transition-all"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border bg-surface-elevated hover:bg-surface-subtle text-content-primary text-xs font-semibold shadow-2xs transition-all"
           >
             <span>Open IDE Workspace</span>
             <ExternalLink className="w-3.5 h-3.5" />
@@ -206,6 +216,11 @@ export const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      <UploadProjectModal
+        isOpen={uploadModalOpen}
+        onClose={() => setUploadModalOpen(false)}
+      />
     </div>
   );
 };

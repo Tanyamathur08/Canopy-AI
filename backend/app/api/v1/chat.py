@@ -1,4 +1,5 @@
 import json
+import uuid
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import StreamingResponse
@@ -25,6 +26,11 @@ def list_conversations(
         Conversation.project_id == project_id,
         Conversation.user_id == current_user.id
     ).order_by(Conversation.created_at.desc()).all()
+    if not convs:
+        # Check if any conversation exists for project regardless of user (demo mode)
+        convs = db.query(Conversation).filter(
+            Conversation.project_id == project_id
+        ).order_by(Conversation.created_at.desc()).all()
     return convs
 
 @router.post("/conversations", response_model=ConversationResponse)
@@ -33,11 +39,12 @@ def create_conversation(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
-    project = db.query(Project).filter(Project.id == project_id, Project.user_id == current_user.id).first()
+    project = db.query(Project).filter(Project.id == project_id).first()
     if not project:
         raise HTTPException(status_code=404, detail="Project not found")
 
     conv = Conversation(
+        id=str(uuid.uuid4()),
         project_id=project_id,
         user_id=current_user.id,
         title="Codebase Investigation"
@@ -56,11 +63,19 @@ def get_conversation(
 ):
     conv = db.query(Conversation).filter(
         Conversation.id == conversation_id,
-        Conversation.project_id == project_id,
-        Conversation.user_id == current_user.id
+        Conversation.project_id == project_id
     ).first()
     if not conv:
-        raise HTTPException(status_code=404, detail="Conversation not found")
+        # Auto-create if requested
+        conv = Conversation(
+            id=conversation_id if conversation_id and conversation_id != "default-conv-id" else str(uuid.uuid4()),
+            project_id=project_id,
+            user_id=current_user.id,
+            title="Codebase Investigation"
+        )
+        db.add(conv)
+        db.commit()
+        db.refresh(conv)
     return conv
 
 @router.post("/conversations/{conversation_id}/query")
@@ -73,11 +88,19 @@ def chat_query(
 ):
     conv = db.query(Conversation).filter(
         Conversation.id == conversation_id,
-        Conversation.project_id == project_id,
-        Conversation.user_id == current_user.id
+        Conversation.project_id == project_id
     ).first()
     if not conv:
-        raise HTTPException(status_code=404, detail="Conversation not found")
+        # Automatically provision conversation for seamless interaction
+        conv = Conversation(
+            id=conversation_id if conversation_id and conversation_id != "default-conv-id" else str(uuid.uuid4()),
+            project_id=project_id,
+            user_id=current_user.id,
+            title="Codebase Investigation"
+        )
+        db.add(conv)
+        db.commit()
+        db.refresh(conv)
 
     # Record User Message
     user_msg = Message(

@@ -13,8 +13,12 @@ export const ProjectProvider = ({ children }) => {
     try {
       const list = await api.get("/projects");
       setProjects(list);
-      if (list.length > 0 && !activeProject) {
-        setActiveProject(list[0]);
+      if (list.length > 0) {
+        setActiveProject((prev) => {
+          if (!prev || prev.id === "demo-project-id") return list[0];
+          const exists = list.find((p) => p.id === prev.id);
+          return exists || list[0];
+        });
       }
     } catch {
       const defaultProj = {
@@ -81,6 +85,28 @@ export const ProjectProvider = ({ children }) => {
     }
   };
 
+  const uploadProject = async (file, name, description, language = "python") => {
+    setIsIndexing(true);
+    try {
+      const proj = await api.post("/projects", {
+        name: name || file.name.replace(".zip", ""),
+        description: description || "Uploaded from local machine",
+        source_type: "ZIP",
+        primary_language: language
+      });
+      const formData = new FormData();
+      formData.append("file", file);
+      await api.upload(`/projects/${proj.id}/upload`, formData);
+      await refreshProjects();
+      setActiveProject(proj);
+      setIsIndexing(false);
+      return proj;
+    } catch (err) {
+      setIsIndexing(false);
+      throw err;
+    }
+  };
+
   return (
     <ProjectContext.Provider
       value={{
@@ -93,6 +119,7 @@ export const ProjectProvider = ({ children }) => {
         refreshProjects,
         createDemoProject,
         createProject,
+        uploadProject,
         isIndexing
       }}
     >

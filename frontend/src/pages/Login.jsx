@@ -55,7 +55,7 @@ export const Login = () => {
             Sign in to Canopy AI
           </h2>
           <p className="text-xs text-content-secondary mt-1">
-            Botanical Codebase Intelligence Platform
+            AI Codebase Intelligence Platform
           </p>
         </div>
 

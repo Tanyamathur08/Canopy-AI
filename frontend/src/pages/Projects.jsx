@@ -5,13 +5,16 @@ import {
   Plus,
   RefreshCw,
   Code2,
-  X
+  X,
+  UploadCloud
 } from "lucide-react";
 import { useProject } from "../contexts/ProjectContext";
+import { UploadProjectModal } from "../components/projects/UploadProjectModal";
 
 export const Projects = () => {
   const { projects, activeProject, setActiveProject, createProject, createDemoProject, refreshProjects } = useProject();
   const [modalOpen, setModalOpen] = useState(false);
+  const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [sourceType, setSourceType] = useState("DEMO");
@@ -57,14 +60,21 @@ export const Projects = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => refreshProjects()}
-            className="p-2 rounded-lg border border-border bg-card/60 hover:bg-accent text-muted-foreground hover:text-foreground transition-colors"
+            className="p-2 rounded-lg border border-border bg-surface-elevated hover:bg-surface-subtle text-content-secondary hover:text-content-primary transition-colors shadow-2xs"
             title="Refresh projects"
           >
             <RefreshCw className="w-4 h-4" />
           </button>
           <button
+            onClick={() => setUploadModalOpen(true)}
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-emerald-300 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 text-emerald-800 dark:text-emerald-300 text-xs font-semibold shadow-2xs transition-all"
+          >
+            <UploadCloud className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <span>Upload Project</span>
+          </button>
+          <button
             onClick={() => setModalOpen(true)}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-semibold shadow-sm transition-all"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary hover:bg-accent-hover text-white text-xs font-semibold shadow-sm transition-all"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>New Project</span>
@@ -243,6 +253,11 @@ export const Projects = () => {
           </div>
         </div>
       )}
+
+      <UploadProjectModal
+        isOpen={uploadModalOpen}
+        onClose={() => setUploadModalOpen(false)}
+      />
     </div>
   );
 };

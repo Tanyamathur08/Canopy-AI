@@ -20,6 +20,8 @@ ENV/
 *.sqlite
 *.sqlite3
 .chroma/
+backend/chroma_data/
+backend/storage/
 backend/app/storage/
 repos/
 

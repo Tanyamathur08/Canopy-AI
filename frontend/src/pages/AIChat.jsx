@@ -110,9 +110,15 @@ export const AIChat = () => {
     const targetConvId = activeConvId || "default-conv-id";
 
     try {
+      const token = localStorage.getItem("codemind_access_token") || localStorage.getItem("canopy_access_token");
+      const headers = { "Content-Type": "application/json" };
+      if (token) {
+        headers["Authorization"] = `Bearer ${token}`;
+      }
+
       const response = await fetch(`http://localhost:8000/api/v1/projects/${pid}/chat/conversations/${targetConvId}/query`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify({ message: text, stream: true })
       });
 

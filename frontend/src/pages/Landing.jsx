@@ -70,13 +70,13 @@ export const Landing = () => {
         {/* Subtle Nature Sprout Pill */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-emerald-300 bg-emerald-50 text-emerald-800 text-xs font-semibold mb-6 shadow-2xs">
           <Leaf className="w-3.5 h-3.5 text-emerald-600" />
-          <span>Botanical Codebase Intelligence & Agentic RAG Platform</span>
+          <span>AI Codebase Intelligence & Agentic RAG Platform</span>
         </div>
 
         <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-content-primary max-w-4xl leading-[1.15]">
           Cultivate & Understand Any Codebase With{" "}
           <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-green-700 bg-clip-text text-transparent">
-            Botanical AI Intelligence
+            AI Codebase Intelligence
           </span>
         </h1>
 
@@ -309,7 +309,7 @@ export const Landing = () => {
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <CanopyLogo size="sm" showText={true} />
-            <span className="text-content-muted">— Botanical Codebase Assistant</span>
+            <span className="text-content-muted">— AI Codebase Assistant</span>
           </div>
           <div>Portfolio project engineered for senior software engineering & AI interviews.</div>
         </div>
