@@ -1,0 +1,38 @@
+# Environments & Secrets
+.env
+.env.local
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+venv/
+env/
+ENV/
+
+# Databases & Vector Stores
+*.db
+*.sqlite
+*.sqlite3
+.chroma/
+backend/app/storage/
+repos/
+
+# Node & Frontend
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# IDE & OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
