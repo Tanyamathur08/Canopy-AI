@@ -212,13 +212,13 @@ export default function Dependencies() {
       <div className="flex-1 flex overflow-hidden">
         {/* Visual Graph Canvas (Left / Center) */}
         <div
-          className="flex-1 relative bg-[#090b10] overflow-hidden select-none cursor-grab active:cursor-grabbing"
+          className="flex-1 relative bg-surface-base overflow-hidden select-none cursor-grab active:cursor-grabbing border-r border-border-base"
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
         >
           {/* Zoom controls overlay */}
-          <div className="absolute bottom-4 left-4 z-10 flex items-center gap-1 bg-surface-elevated/90 backdrop-blur border border-border-base rounded-lg p-1 shadow-lg">
+          <div className="absolute bottom-4 left-4 z-10 flex items-center gap-1 bg-surface-elevated/95 backdrop-blur border border-border-base rounded-lg p-1 shadow-md">
             <button
               onClick={() => setZoom((z) => Math.min(z + 0.2, 2.5))}
               className="p-1.5 rounded hover:bg-surface-subtle text-content-muted hover:text-content-primary"
@@ -247,21 +247,21 @@ export default function Dependencies() {
           </div>
 
           {/* Canvas Stats Pill */}
-          <div className="absolute top-4 left-4 z-10 flex items-center gap-3 bg-surface-elevated/80 backdrop-blur border border-border-base rounded-lg px-3 py-1.5 text-xs text-content-muted">
+          <div className="absolute top-4 left-4 z-10 flex items-center gap-3 bg-surface-elevated/90 backdrop-blur border border-border-base rounded-lg px-3 py-1.5 text-xs text-content-secondary shadow-xs">
             <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-blue-400"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
               <span>{graphData.nodes.filter((n) => n.node_type === "file").length} Files</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
               <span>{graphData.nodes.filter((n) => n.node_type === "class").length} Classes</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
               <span>{graphData.nodes.filter((n) => n.node_type === "function").length} Functions</span>
             </div>
             <div className="flex items-center gap-1.5 border-l border-border-base pl-2">
-              <span className="font-mono text-content-primary font-medium">{graphData.edges.length}</span>
+              <span className="font-mono text-content-primary font-bold">{graphData.edges.length}</span>
               <span>Edges</span>
             </div>
           </div>
@@ -284,7 +284,7 @@ export default function Dependencies() {
                 refY="3"
                 orient="auto"
               >
-                <polygon points="0 0, 8 3, 0 6" fill="#4b5563" />
+                <polygon points="0 0, 8 3, 0 6" fill="#94a3b8" />
               </marker>
               <marker
                 id="arrowhead-active"
@@ -294,7 +294,7 @@ export default function Dependencies() {
                 refY="3"
                 orient="auto"
               >
-                <polygon points="0 0, 8 3, 0 6" fill="#3b82f6" />
+                <polygon points="0 0, 8 3, 0 6" fill="#059669" />
               </marker>
             </defs>
 
@@ -316,8 +316,8 @@ export default function Dependencies() {
                       y1={sourceNode.y}
                       x2={targetNode.x}
                       y2={targetNode.y}
-                      stroke={isConnectedToSelected ? "#3b82f6" : "#27272a"}
-                      strokeWidth={isConnectedToSelected ? 2 : 1}
+                      stroke={isConnectedToSelected ? "#059669" : "#cbd5e1"}
+                      strokeWidth={isConnectedToSelected ? 2.5 : 1.2}
                       strokeDasharray={edge.label === "IMPORTS" ? "4 3" : undefined}
                       markerEnd={isConnectedToSelected ? "url(#arrowhead-active)" : "url(#arrowhead)"}
                     />

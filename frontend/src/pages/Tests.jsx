@@ -167,7 +167,7 @@ export default function Tests() {
       {/* Main Content Area */}
       <div className="flex-1 flex overflow-hidden">
         {/* Left / Center: Active Run Output Log Terminal */}
-        <div className="flex-1 flex flex-col bg-[#090b10] border-r border-border-base overflow-hidden">
+        <div className="flex-1 flex flex-col bg-surface-subtle border-r border-border-base overflow-hidden">
           {/* Terminal Titlebar */}
           <div className="flex items-center justify-between px-4 py-2.5 bg-surface-elevated/40 border-b border-border-base">
             <div className="flex items-center gap-2">
@@ -360,7 +360,7 @@ export default function Tests() {
             </form>
 
             {/* Generated Code Preview */}
-            <div className="flex-1 overflow-y-auto p-5 bg-[#090b10]">
+            <div className="flex-1 overflow-y-auto p-5 bg-surface-subtle">
               {generatedResult ? (
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">

@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useProject } from "../../contexts/ProjectContext";
+import { CanopyLogo } from "../common/CanopyLogo";
 import { cn } from "../../utils/cn";
 
 export const Sidebar = () => {
@@ -42,24 +43,14 @@ export const Sidebar = () => {
   return (
     <aside
       className={cn(
-        "relative flex flex-col h-screen bg-sidebar border-r border-sidebar-border transition-all duration-300 z-30 select-none",
+        "relative flex flex-col h-screen bg-sidebar border-r border-sidebar-border transition-all duration-300 z-30 select-none shadow-sm",
         collapsed ? "w-16" : "w-64"
       )}
     >
       {/* Brand Header */}
-      <div className="flex items-center justify-between h-14 px-4 border-b border-sidebar-border">
-        <Link to="/" className="flex items-center space-x-2.5 overflow-hidden">
-          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/20 border border-primary/40 text-primary font-bold shadow-sm">
-            <Terminal className="w-4 h-4 text-indigo-400" />
-          </div>
-          {!collapsed && (
-            <div className="flex flex-col">
-              <span className="font-semibold text-sm tracking-tight text-foreground flex items-center gap-1.5">
-                CodeMind <span className="text-[10px] uppercase font-bold px-1 py-0.2 bg-primary/20 text-primary rounded">AI</span>
-              </span>
-              <span className="text-[10px] text-muted-foreground truncate max-w-[130px]">Codebase Intelligence</span>
-            </div>
-          )}
+      <div className="flex items-center justify-between h-14 px-3.5 border-b border-sidebar-border bg-sidebar">
+        <Link to="/" className="flex items-center overflow-hidden">
+          <CanopyLogo size={collapsed ? "sm" : "md"} showText={!collapsed} />
         </Link>
         <button
           onClick={() => setCollapsed(!collapsed)}

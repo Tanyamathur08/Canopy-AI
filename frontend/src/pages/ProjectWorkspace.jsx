@@ -281,12 +281,12 @@ class PaymentService:
         </div>
 
         {/* Center: Monaco Editor */}
-        <div className="flex-1 flex flex-col bg-[#1e1e1e] overflow-hidden relative">
+        <div className="flex-1 flex flex-col bg-surface-elevated overflow-hidden relative">
           <Editor
             height="100%"
             language={currentFileLang}
             value={fileContent}
-            theme="vs-dark"
+            theme="light"
             options={{
               fontSize: 13,
               fontFamily: "JetBrains Mono, Menlo, Monaco, Courier New, monospace",

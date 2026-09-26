@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  Terminal,
   Search,
   BotMessageSquare,
   Network,
@@ -12,10 +11,15 @@ import {
   Cpu,
   Database,
   CheckCircle2,
-  Play
+  Play,
+  Leaf,
+  Layers,
+  ShieldAlert,
+  GitBranch
 } from "lucide-react";
 import { useAuth } from "../contexts/AuthContext";
 import { useProject } from "../contexts/ProjectContext";
+import { CanopyLogo } from "../components/common/CanopyLogo";
 
 export const Landing = () => {
   const navigate = useNavigate();
@@ -29,36 +33,31 @@ export const Landing = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-primary/30">
+    <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-emerald-500/20 selection:text-emerald-900">
       {/* Top Navigation */}
-      <header className="sticky top-0 z-50 backdrop-blur-lg bg-background/80 border-b border-border/80 px-6 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
-          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/20 border border-primary/40 text-primary font-bold shadow-sm">
-            <Terminal className="w-4 h-4 text-indigo-400" />
-          </div>
-          <span className="font-semibold text-base tracking-tight text-foreground flex items-center gap-1.5">
-            CodeMind <span className="text-[10px] uppercase font-bold px-1.5 py-0.5 bg-primary/20 text-primary rounded border border-primary/30">AI</span>
-          </span>
-        </div>
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-background/85 border-b border-border/80 px-6 h-16 flex items-center justify-between shadow-xs">
+        <Link to="/" className="flex items-center gap-2">
+          <CanopyLogo size="md" showText={true} />
+        </Link>
 
-        <nav className="hidden md:flex items-center gap-8 text-xs font-medium text-muted-foreground">
-          <a href="#features" className="hover:text-foreground transition-colors">Features</a>
-          <a href="#how-it-works" className="hover:text-foreground transition-colors">How It Works</a>
-          <a href="#technology" className="hover:text-foreground transition-colors">Architecture</a>
-          <Link to="/login" className="hover:text-foreground transition-colors">Sign In</Link>
+        <nav className="hidden md:flex items-center gap-8 text-xs font-semibold text-content-secondary">
+          <a href="#features" className="hover:text-primary transition-colors">Ecosystem Features</a>
+          <a href="#how-it-works" className="hover:text-primary transition-colors">How It Grows</a>
+          <a href="#technology" className="hover:text-primary transition-colors">Architecture</a>
+          <Link to="/login" className="hover:text-primary transition-colors">Sign In</Link>
         </nav>
 
         <div className="flex items-center gap-3">
           <button
             onClick={handleLaunchDemo}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-card/60 hover:bg-accent/40 text-xs font-medium text-foreground transition-all shadow-sm"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-surface-elevated hover:bg-surface-subtle text-xs font-medium text-content-primary transition-all shadow-xs"
           >
-            <Play className="w-3 h-3 text-emerald-400 fill-emerald-400" />
+            <Play className="w-3.5 h-3.5 text-emerald-600 fill-emerald-600" />
             <span>Launch Live Demo</span>
           </button>
           <Link
             to="/register"
-            className="flex items-center gap-1 px-3.5 py-1.5 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-semibold shadow-md transition-all"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-primary hover:bg-accent-hover text-white text-xs font-semibold shadow-sm transition-all"
           >
             <span>Get Started</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -68,130 +67,123 @@ export const Landing = () => {
 
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 px-6 max-w-6xl mx-auto flex flex-col items-center text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-medium mb-6">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Agentic AI & RAG Software Engineering Platform</span>
+        {/* Subtle Nature Sprout Pill */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-emerald-300 bg-emerald-50 text-emerald-800 text-xs font-semibold mb-6 shadow-2xs">
+          <Leaf className="w-3.5 h-3.5 text-emerald-600" />
+          <span>Botanical Codebase Intelligence & Agentic RAG Platform</span>
         </div>
 
-        <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-foreground max-w-3xl leading-[1.15]">
-          Understand Any Codebase With <span className="bg-gradient-to-r from-indigo-400 via-purple-300 to-indigo-200 bg-clip-text text-transparent">AI Intelligence</span>
+        <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-content-primary max-w-4xl leading-[1.15]">
+          Cultivate & Understand Any Codebase With{" "}
+          <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-green-700 bg-clip-text text-transparent">
+            Botanical AI Intelligence
+          </span>
         </h1>
 
-        <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
-          An agentic software engineering assistant that performs AST semantic search, traces Neo4j dependency topologies, and reasons over code with LangGraph & Google Gemini.
+        <p className="mt-5 text-base sm:text-lg text-content-secondary max-w-2xl leading-relaxed font-normal">
+          From root trunks to leafy function branches, <strong>Canopy AI</strong> weaves semantic AST retrieval, Neo4j dependency topologies, and LangGraph agent reasoning into a serene, high-yield developer ecosystem.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Link
             to="/register"
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-semibold shadow-lg shadow-primary/20 transition-all"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-accent-hover text-white text-sm font-semibold shadow-md shadow-emerald-600/20 transition-all"
           >
-            <span>Get Started</span>
+            <span>Start Exploring Free</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
           <button
             onClick={handleLaunchDemo}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border bg-card/80 hover:bg-accent/60 text-foreground text-sm font-semibold transition-all shadow-sm"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border bg-surface-elevated hover:bg-surface-subtle text-content-primary text-sm font-semibold transition-all shadow-xs"
           >
-            <Play className="w-4 h-4 text-emerald-400 fill-emerald-400" />
-            <span>View Demo</span>
+            <Play className="w-4 h-4 text-emerald-600 fill-emerald-600" />
+            <span>Explore Demo Microservice</span>
           </button>
         </div>
 
-        {/* Hero Visual: Realistic IDE Workspace Mockup */}
-        <div className="mt-14 w-full rounded-2xl border border-border/80 bg-card/90 shadow-2xl overflow-hidden text-left flex flex-col">
-          <div className="h-10 bg-secondary/70 border-b border-border px-4 flex items-center justify-between">
+        {/* Hero Interactive IDE Mockup (Bright Theme) */}
+        <div className="mt-14 w-full max-w-5xl rounded-2xl border border-border bg-surface-elevated shadow-xl overflow-hidden text-left">
+          {/* Window Chrome */}
+          <div className="h-10 bg-surface-subtle border-b border-border px-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-rose-500/80" />
-              <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-              <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
-              <span className="ml-3 text-xs font-mono text-muted-foreground">codemind-workspace — auth/security.py</span>
+              <span className="w-3 h-3 rounded-full bg-red-400" />
+              <span className="w-3 h-3 rounded-full bg-amber-400" />
+              <span className="w-3 h-3 rounded-full bg-emerald-400" />
+              <span className="ml-3 text-xs font-mono text-content-muted">
+                canopy-workspace / auth / security.py
+              </span>
             </div>
-            <div className="flex items-center gap-3 text-xs text-muted-foreground font-mono">
-              <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-emerald-400" /> ChromaDB Synced</span>
-              <span>Neo4j Graph Active</span>
+            <div className="flex items-center gap-3 text-2xs font-mono text-content-muted">
+              <span className="flex items-center gap-1 text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full font-sans font-semibold">
+                ● AST Knowledge Tree Active
+              </span>
             </div>
           </div>
 
-          <div className="grid grid-cols-12 min-h-[380px] text-xs">
-            {/* Left: File Tree */}
-            <div className="col-span-3 border-r border-border bg-sidebar/50 p-3 font-mono">
-              <div className="text-[11px] uppercase tracking-wider text-muted-foreground font-bold mb-2">Explorer</div>
-              <div className="space-y-1 text-muted-foreground">
-                <div className="text-foreground flex items-center gap-1.5 font-medium">▼ app/</div>
-                <div className="pl-3 space-y-1">
-                  <div className="text-foreground flex items-center gap-1.5 font-medium">▼ auth/</div>
-                  <div className="pl-3 text-primary flex items-center gap-1 font-semibold bg-primary/10 rounded px-1 py-0.5">
-                    ● security.py
-                  </div>
-                  <div className="pl-3 hover:text-foreground">router.py</div>
-                  <div className="text-foreground flex items-center gap-1.5 font-medium">▼ services/</div>
-                  <div className="pl-3 hover:text-foreground">user_service.py</div>
-                  <div className="pl-3 hover:text-foreground">payment_service.py</div>
-                  <div className="hover:text-foreground">main.py</div>
-                </div>
+          {/* IDE 3-Pane Preview */}
+          <div className="grid grid-cols-12 h-84 font-mono text-xs">
+            {/* Tree Branch Nav */}
+            <div className="col-span-3 border-r border-border bg-surface-subtle/50 p-3 space-y-1.5 select-none">
+              <div className="text-[10px] uppercase font-bold text-content-muted tracking-wider mb-2">
+                Knowledge Roots
+              </div>
+              <div className="text-content-muted text-2xs flex items-center gap-1.5 pl-1">
+                <span>📁</span> <span>auth/</span>
+              </div>
+              <div className="bg-emerald-100 text-emerald-900 font-semibold rounded px-2 py-1 flex items-center gap-1.5 text-2xs border border-emerald-300">
+                <Leaf className="w-3 h-3 text-emerald-700" />
+                <span>security.py</span>
+              </div>
+              <div className="text-content-muted text-2xs flex items-center gap-1.5 pl-1">
+                <span>📁</span> <span>services/</span>
+              </div>
+              <div className="text-content-secondary text-2xs flex items-center gap-1.5 pl-4">
+                <span>📄</span> <span>user_service.py</span>
+              </div>
+              <div className="text-content-secondary text-2xs flex items-center gap-1.5 pl-4">
+                <span>📄</span> <span>payment_service.py</span>
+              </div>
+              <div className="text-content-muted text-2xs flex items-center gap-1.5 pl-1">
+                <span>📁</span> <span>tests/</span>
               </div>
             </div>
 
-            {/* Center: Code View */}
-            <div className="col-span-5 bg-background/80 p-4 font-mono overflow-x-auto text-[11px] leading-relaxed">
-              <div className="text-muted-foreground flex gap-4">
-                <span className="text-border select-none">12</span>
-                <span className="text-purple-400">def</span> <span className="text-blue-400">verify_password</span>(plain_password: <span className="text-amber-300">str</span>, hashed: <span className="text-amber-300">str</span>) -&gt; <span className="text-amber-300">bool</span>:
-              </div>
-              <div className="text-muted-foreground flex gap-4">
-                <span className="text-border select-none">13</span>
-                <span className="text-muted-foreground">    salt_hex, key_hex = hashed.split(":")</span>
-              </div>
-              <div className="text-muted-foreground flex gap-4">
-                <span className="text-border select-none">14</span>
-                <span className="text-muted-foreground">    salt = bytes.fromhex(salt_hex)</span>
-              </div>
-              <div className="text-muted-foreground flex gap-4">
-                <span className="text-border select-none">15</span>
-                <span className="text-muted-foreground">    key = hashlib.pbkdf2_hmac('sha256', plain_password.encode(), salt, 100_000)</span>
-              </div>
-              <div className="text-muted-foreground flex gap-4 bg-primary/10 border-l-2 border-primary pl-1 -ml-1">
-                <span className="text-border select-none">16</span>
-                <span className="text-primary font-bold">    return hmac.compare_digest(key, bytes.fromhex(key_hex))</span>
-              </div>
-              <div className="text-muted-foreground flex gap-4 mt-4">
-                <span className="text-border select-none">20</span>
-                <span className="text-purple-400">def</span> <span className="text-blue-400">generate_access_token</span>(user_id: <span className="text-amber-300">str</span>, email: <span className="text-amber-300">str</span>):
-              </div>
-              <div className="text-muted-foreground flex gap-4">
-                <span className="text-border select-none">21</span>
-                <span className="text-muted-foreground">    expire = datetime.now(timezone.utc) + timedelta(minutes=60)</span>
-              </div>
+            {/* Code Body */}
+            <div className="col-span-5 p-4 bg-surface-elevated overflow-hidden leading-relaxed text-content-secondary border-r border-border">
+              <div className="text-content-muted italic"># Canopy AI Grounded AST Chunk [Lines 14-28]</div>
+              <div><span className="text-emerald-700 font-bold">def</span> <span className="text-teal-700 font-bold">verify_token</span>(token: <span className="text-amber-700">str</span>):</div>
+              <div className="pl-4 text-content-muted">"""Validates signature & unpacks claims."""</div>
+              <div className="pl-4"><span className="text-emerald-700 font-bold">try</span>:</div>
+              <div className="pl-8">payload = jwt.decode(token, SECRET_KEY)</div>
+              <div className="pl-8"><span className="text-emerald-700 font-bold">return</span> TokenPayload(**payload)</div>
+              <div className="pl-4"><span className="text-emerald-700 font-bold">except</span> JWTError <span className="text-emerald-700 font-bold">as</span> exc:</div>
+              <div className="pl-8"><span className="text-emerald-700 font-bold">raise</span> CredentialsException()</div>
             </div>
 
-            {/* Right: Agent Reasoning Panel */}
-            <div className="col-span-4 border-l border-border bg-secondary/30 p-4 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <BotMessageSquare className="w-4 h-4 text-primary" />
-                  <span className="font-semibold text-xs text-foreground">LangGraph Agent Response</span>
+            {/* Agent Live Thought Stream */}
+            <div className="col-span-4 p-4 bg-emerald-50/40 flex flex-col justify-between">
+              <div className="space-y-2.5">
+                <div className="flex items-center gap-1.5 text-emerald-800 text-xs font-semibold">
+                  <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Canopy Agent Reasoning</span>
                 </div>
-                <div className="p-2.5 rounded-lg bg-card border border-border/80 text-[11px] leading-relaxed text-muted-foreground space-y-2">
-                  <p className="text-foreground font-medium">
-                    "Authentication is implemented using salted PBKDF2-HMAC-SHA256 and verified through constant-time comparison."
-                  </p>
-                  <div className="pt-2 border-t border-border/60">
-                    <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider block mb-1">
-                      Cited Sources:
-                    </span>
-                    <span className="inline-block px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20 text-primary font-mono text-[10px]">
-                      auth/security.py:12-16
-                    </span>
+                <div className="space-y-1 text-2xs font-mono">
+                  <div className="p-1.5 rounded bg-surface-elevated border border-emerald-200 text-emerald-800 flex items-center gap-1.5 shadow-2xs">
+                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                    <span>Scanned AST for verify_token</span>
+                  </div>
+                  <div className="p-1.5 rounded bg-surface-elevated border border-emerald-200 text-emerald-800 flex items-center gap-1.5 shadow-2xs">
+                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                    <span>Traversed 4 callers in Neo4j</span>
+                  </div>
+                  <div className="p-1.5 rounded bg-emerald-100 border border-emerald-300 text-emerald-900 flex items-center gap-1.5 font-semibold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-ping" />
+                    <span>Synthesizing verified explanation...</span>
                   </div>
                 </div>
               </div>
-
-              <div className="pt-3 border-t border-border flex items-center justify-between text-[10px] text-muted-foreground">
-                <span className="flex items-center gap-1 text-emerald-400">
-                  <CheckCircle2 className="w-3 h-3" /> Grounded in AST
-                </span>
-                <span>Latency: 280ms</span>
+              <div className="text-[11px] text-content-muted font-sans italic border-t border-emerald-200 pt-2">
+                "Token verification uses standard HMAC-SHA256 with 2-level dependency callers in UserService."
               </div>
             </div>
           </div>
@@ -199,47 +191,47 @@ export const Landing = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 border-t border-border bg-card/20 px-6">
+      <section id="features" className="py-20 border-t border-border bg-surface-subtle/50 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-              Engineered for Deep Code Intelligence
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-content-primary">
+              Engineered for Deep Code Ecosystem Intelligence
             </h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Beyond simple token matching — CodeMind combines AST parsers, semantic vector search, and graph traversal.
+            <p className="mt-2 text-sm text-content-secondary">
+              Beyond superficial token matching — Canopy AI grounds every answer in deterministic AST parsing, ChromaDB semantic vectors, and Neo4j call graph topologies.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                title: "AI Code Search",
-                desc: "Search your entire repository using natural language. Matches AST symbols, docstrings, and syntax signatures.",
+                title: "Semantic Code Search",
+                desc: "Search your entire repository using natural language. Matches AST symbols, docstrings, and syntax signatures with dense embeddings.",
                 icon: Search
               },
               {
                 title: "RAG-Powered Understanding",
-                desc: "Retrieve relevant code before generating answers with ChromaDB vector search and semantic chunking.",
+                desc: "Retrieve precise semantic code chunks before generating answers with ChromaDB vector search and deterministic fallback.",
                 icon: Database
               },
               {
-                title: "Dependency Intelligence",
-                desc: "Understand relationships between files, classes, and functions with Neo4j property graphs.",
+                title: "Neo4j Dependency Canopy",
+                desc: "Explore relationships between files, classes, and functions with interactive call hierarchies and blast-radius risk calculations.",
                 icon: Network
               },
               {
-                title: "Agentic Analysis",
-                desc: "LangGraph agents select tools and investigate problems through autonomous multi-step reasoning.",
+                title: "Agentic LangGraph Reasoning",
+                desc: "Multi-step autonomous agents select tools, inspect source trees, and synthesize verified explanations over real-time SSE streams.",
                 icon: Cpu
               },
               {
-                title: "Code Explorer",
-                desc: "Navigate your repository using an integrated developer workspace with Monaco code editor.",
+                title: "Monaco Code Explorer",
+                desc: "Navigate your repository in a bright, clean developer workspace equipped with Monaco Editor and contextual AI code actions.",
                 icon: Code2
               },
               {
-                title: "Test Generation",
-                desc: "Generate and analyze Pytest tests with isolated sandboxed execution.",
+                title: "Pytest Suite Automation",
+                desc: "Generate idiomatic Pytest cases, run test suites in sandbox runners, and stream terminal logs directly inside the browser.",
                 icon: TestTube2
               },
             ].map((feature) => {
@@ -247,14 +239,14 @@ export const Landing = () => {
               return (
                 <div
                   key={feature.title}
-                  className="p-6 rounded-xl border border-border/80 bg-card/60 hover:bg-card hover:border-primary/40 transition-all shadow-sm flex flex-col justify-between"
+                  className="p-6 rounded-2xl border border-border bg-surface-elevated hover:border-emerald-400 hover:shadow-md transition-all flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/25 flex items-center justify-center text-primary mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-800 mb-4 group-hover:scale-110 transition-transform">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="font-semibold text-sm text-foreground mb-2">{feature.title}</h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{feature.desc}</p>
+                    <h3 className="font-bold text-sm text-content-primary mb-2">{feature.title}</h3>
+                    <p className="text-xs text-content-secondary leading-relaxed">{feature.desc}</p>
                   </div>
                 </div>
               );
@@ -264,31 +256,31 @@ export const Landing = () => {
       </section>
 
       {/* How It Works Timeline */}
-      <section id="how-it-works" className="py-20 border-t border-border px-6">
+      <section id="how-it-works" className="py-20 border-t border-border px-6 bg-surface-elevated">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-content-primary">
               Autonomous Ingestion & Indexing Pipeline
             </h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              From repository connection to agentic reasoning in six deterministic steps.
+            <p className="mt-2 text-sm text-content-secondary">
+              From repository ingestion to agentic reasoning in six deterministic steps.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 font-mono text-xs">
             {[
-              { step: "01", title: "Connect Repository", desc: "Connect GitHub repository, upload a ZIP codebase, or load the built-in demo repository." },
-              { step: "02", title: "Index Codebase", desc: "Scan repository tree, filter build artifacts, and prepare AST parser queues." },
-              { step: "03", title: "Build Code Knowledge", desc: "Extract symbols, functions, classes, and generate embeddings for ChromaDB and Neo4j." },
-              { step: "04", title: "Ask AI", desc: "Interact with the LangGraph agent to ask architectural questions and trace flows." },
-              { step: "05", title: "Explore Dependencies", desc: "Navigate interactive node-link call graphs and calculate blast radius risks." },
-              { step: "06", title: "Analyze & Improve", desc: "Review AST security findings, identify code smells, and generate Pytest suites." },
+              { step: "01", title: "Plant Codebase", desc: "Connect GitHub repository, upload a ZIP codebase, or initialize with the built-in reference microservice." },
+              { step: "02", title: "Harvest File Tree", desc: "Scan repository tree, filter build artifacts, and prepare AST parser queues with safety traversal guards." },
+              { step: "03", title: "Grow Knowledge Graph", desc: "Extract AST symbols, functions, classes, and generate embeddings for ChromaDB and Neo4j call graphs." },
+              { step: "04", title: "Converse With Agent", desc: "Interact with the LangGraph agent to ask architectural questions, trace data flows, and explore bugs." },
+              { step: "05", title: "Explore Canopy Topologies", desc: "Navigate interactive node-link dependency graphs and calculate change blast-radius risks." },
+              { step: "06", title: "Audit & Cultivate", desc: "Review AST static security findings, detect code smells, and synthesize regression Pytest suites." },
             ].map((item) => (
-              <div key={item.step} className="p-5 rounded-xl border border-border bg-card/40 flex flex-col justify-between">
+              <div key={item.step} className="p-5 rounded-2xl border border-border bg-surface-subtle/50 flex flex-col justify-between hover:border-emerald-300 transition-colors">
                 <div>
-                  <span className="text-primary font-bold text-sm tracking-wider">{item.step}</span>
-                  <h4 className="font-semibold text-foreground text-xs mt-2 mb-1.5 font-sans">{item.title}</h4>
-                  <p className="text-muted-foreground leading-relaxed text-[11px] font-sans">{item.desc}</p>
+                  <span className="text-emerald-700 font-bold text-sm tracking-wider">{item.step}</span>
+                  <h4 className="font-bold text-content-primary text-xs mt-2 mb-1.5 font-sans">{item.title}</h4>
+                  <p className="text-content-secondary leading-relaxed text-[11px] font-sans">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -297,14 +289,14 @@ export const Landing = () => {
       </section>
 
       {/* Technology Section */}
-      <section id="technology" className="py-16 border-t border-border bg-card/20 px-6">
+      <section id="technology" className="py-16 border-t border-border bg-surface-subtle/40 px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <h3 className="text-xs uppercase font-bold tracking-widest text-muted-foreground mb-8">
+          <h3 className="text-xs uppercase font-extrabold tracking-widest text-content-muted mb-8">
             Powered by Production-Grade Software Technologies
           </h3>
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 font-mono text-xs text-foreground">
-            {["Python", "FastAPI", "React", "JavaScript", "LangChain", "LangGraph", "Gemini", "ChromaDB", "Neo4j", "PostgreSQL", "Docker", "Pytest"].map((tech) => (
-              <div key={tech} className="px-3.5 py-1.5 rounded-lg border border-border bg-card/80 font-medium">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 font-mono text-xs text-content-primary">
+            {["Python 3.11+", "FastAPI", "React 19", "JavaScript (ES6+)", "LangGraph", "Google Gemini", "ChromaDB", "Neo4j", "PostgreSQL", "Docker", "Pytest"].map((tech) => (
+              <div key={tech} className="px-3.5 py-1.5 rounded-lg border border-border bg-surface-elevated shadow-2xs font-semibold hover:border-emerald-300 transition-colors">
                 {tech}
               </div>
             ))}
@@ -313,14 +305,13 @@ export const Landing = () => {
       </section>
 
       {/* Footer */}
-      <footer className="mt-auto border-t border-border py-8 px-6 text-center text-xs text-muted-foreground">
+      <footer className="mt-auto border-t border-border py-8 px-6 text-center text-xs text-content-muted bg-surface-elevated">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <Terminal className="w-4 h-4 text-primary" />
-            <span className="font-semibold text-foreground">CodeMind AI</span>
-            <span>— AI Codebase Assistant</span>
+            <CanopyLogo size="sm" showText={true} />
+            <span className="text-content-muted">— Botanical Codebase Assistant</span>
           </div>
-          <div>Portfolio project designed for senior software engineering interviews.</div>
+          <div>Portfolio project engineered for senior software engineering & AI interviews.</div>
         </div>
       </footer>
     </div>

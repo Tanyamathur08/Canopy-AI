@@ -382,7 +382,7 @@ export default function Analysis() {
                 </div>
 
                 {item.evidence && (
-                  <pre className="p-2 rounded bg-[#090b10] border border-border-base/50 text-content-secondary text-2xs overflow-x-auto">
+                  <pre className="p-2.5 rounded bg-surface-subtle border border-border-base text-content-primary text-2xs overflow-x-auto font-mono">
                     {item.evidence}
                   </pre>
                 )}

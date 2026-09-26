@@ -215,7 +215,7 @@ export default function Settings() {
               </div>
               <p className="text-2xs text-content-muted mt-1 flex items-center gap-1">
                 <Info className="w-3 h-3" />
-                CodeMind AI includes a built-in deterministic fallback for 100% offline functionality.
+                Canopy AI includes a built-in deterministic fallback for 100% offline functionality.
               </p>
             </div>
           </div>

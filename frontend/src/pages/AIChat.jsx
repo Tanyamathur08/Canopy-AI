@@ -54,8 +54,8 @@ export const AIChat = () => {
             {
               id: "msg-1",
               role: "ASSISTANT",
-              content: "Hello! I am your CodeMind AI assistant. I have indexed your repository's AST symbols, vector embeddings in ChromaDB, and dependency graph in Neo4j. Ask me anything about your code architecture, dependencies, or implementation details.",
-              tool_activity: ["✓ Initialized LangGraph agent", "✓ Connected to ChromaDB vector store", "✓ Mapped Neo4j call graph"],
+              content: "Hello! I am your Canopy AI assistant. I have mapped your repository's AST knowledge tree, indexed vector embeddings in ChromaDB, and woven your dependency canopy in Neo4j. Ask me anything about your code architecture, dependencies, or implementation details.",
+              tool_activity: ["✓ Initialized LangGraph agent", "✓ Connected to ChromaDB vector store", "✓ Mapped Neo4j canopy graph"],
               created_at: new Date().toISOString()
             }
           ]

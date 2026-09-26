@@ -14,13 +14,13 @@ class Settings(BaseSettings):
         extra="ignore"
     )
 
-    APP_NAME: str = "CodeMind AI"
+    APP_NAME: str = "Canopy AI"
     APP_VERSION: str = "1.0.0"
     ENVIRONMENT: str = "development"
     LOG_LEVEL: str = "INFO"
 
     # Database
-    DATABASE_URL: str = "sqlite:///./codemind.db"
+    DATABASE_URL: str = "sqlite:///./canopy.db"
 
     # Security
     JWT_SECRET: str = "dev_super_secret_jwt_key_change_in_production_32_bytes_long_min"
