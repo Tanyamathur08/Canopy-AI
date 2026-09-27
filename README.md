@@ -1,4 +1,4 @@
-# CodeMind AI — AI Codebase Assistant
+# Canopy AI — AI Codebase Assistant
 ### Agentic AI & RAG Software Engineering System
 
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
@@ -10,7 +10,7 @@
 [![Neo4j](https://img.shields.io/badge/Neo4j-Graph_DB-008CC1?style=flat&logo=neo4j&logoColor=white)](https://neo4j.com/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
 
-> **CodeMind AI** is an enterprise-grade developer platform designed for deep codebase intelligence, semantic exploration, dependency topology mapping, and autonomous problem-solving. Grounded directly in repository AST symbols, vector embeddings, and Neo4j property graphs.
+> **Canopy AI** is an enterprise-grade developer platform designed for deep codebase intelligence, semantic exploration, dependency topology mapping, and autonomous problem-solving. Grounded directly in repository AST symbols, vector embeddings, and Neo4j property graphs.
 
 ---
 
