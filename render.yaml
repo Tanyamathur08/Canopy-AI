@@ -2,7 +2,7 @@
 # Deploy with 1-click on https://dashboard.render.com/blueprints
 
 services:
-  # 1. FastAPI Python Backend Service
+  # 1. FastAPI Python Backend Web Service
   - type: web
     name: canopy-ai-backend
     runtime: python
@@ -17,9 +17,10 @@ services:
       - key: GEMINI_API_KEY
         sync: false
 
-  # 2. React + Vite Static Frontend (Free tier forever)
-  - type: static
+  # 2. React + Vite Static Frontend (Render type: web with runtime: static)
+  - type: web
     name: canopy-ai-frontend
+    runtime: static
     rootDir: frontend
     buildCommand: "npm install && npm run build"
     staticPublishPath: dist
