@@ -53,6 +53,22 @@ async def global_exception_handler(request: Request, exc: Exception):
         content={"detail": "An internal server error occurred. Please try again."}
     )
 
+@app.get("/", tags=["Root"])
+def root():
+    return {
+        "app": settings.APP_NAME,
+        "version": settings.APP_VERSION,
+        "status": "online",
+        "message": "Canopy AI Backend API is live and operational!",
+        "interactive_api_docs": "/docs",
+        "health": "/health"
+    }
+
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon():
+    from fastapi import Response
+    return Response(status_code=204)
+
 @app.get("/health", tags=["Health"])
 def health_check():
     return {
