@@ -1,11 +1,12 @@
 # Render Blueprint Specification for Canopy AI
-# Deploy with 1-click on https://dashboard.render.com/blueprints
+# Deploy for free on https://dashboard.render.com/blueprints
 
 services:
-  # 1. FastAPI Python Backend Web Service
+  # 1. FastAPI Python Backend Web Service (Free Tier)
   - type: web
     name: canopy-ai-backend
     runtime: python
+    plan: free
     rootDir: backend
     buildCommand: "pip install -r requirements.txt"
     startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
@@ -17,10 +18,11 @@ services:
       - key: GEMINI_API_KEY
         sync: false
 
-  # 2. React + Vite Static Frontend (Render type: web with runtime: static)
+  # 2. React + Vite Static Frontend (Free Tier)
   - type: web
     name: canopy-ai-frontend
     runtime: static
+    plan: free
     rootDir: frontend
     buildCommand: "npm install && npm run build"
     staticPublishPath: dist
