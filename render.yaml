@@ -18,11 +18,10 @@ services:
       - key: GEMINI_API_KEY
         sync: false
 
-  # 2. React + Vite Static Frontend (Free Tier)
+  # 2. React + Vite Static Frontend (Render Static Sites are free by default)
   - type: web
     name: canopy-ai-frontend
     runtime: static
-    plan: free
     rootDir: frontend
     buildCommand: "npm install && npm run build"
     staticPublishPath: dist
