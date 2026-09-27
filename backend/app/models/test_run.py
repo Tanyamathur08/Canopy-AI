@@ -14,6 +14,9 @@ class TestRun(TimeStampedBase):
     skipped_count = Column(Integer, default=0, nullable=False)
     duration_sec = Column(Float, default=0.0, nullable=False)
     output_log = Column(Text, nullable=True)
+    failure_description = Column(Text, nullable=True)
+    suggested_solution = Column(Text, nullable=True)
+    suggested_code = Column(Text, nullable=True)
 
     # Relationships
     project = relationship("Project", back_populates="test_runs")

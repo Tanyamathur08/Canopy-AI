@@ -28,4 +28,8 @@ class TestRunResponse(BaseModel):
     skipped_count: int
     duration_sec: float
     output_log: str
+    failure_description: Optional[str] = None
+    suggested_solution: Optional[str] = None
+    suggested_code: Optional[str] = None
+    test_suite_name: Optional[str] = None
     created_at: datetime
