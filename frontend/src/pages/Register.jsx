@@ -43,8 +43,8 @@ export const Register = () => {
           <h2 className="text-2xl font-extrabold tracking-tight text-content-primary">
             Join Canopy AI
           </h2>
-          <p className="text-xs text-content-secondary mt-1">
-            Cultivate and understand your codebase ecosystem
+          <p className="text-xs text-content-secondary mt-1 font-medium">
+            Understand your codebase. Not just your code.
           </p>
         </div>
 

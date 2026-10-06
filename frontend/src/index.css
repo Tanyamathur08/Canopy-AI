@@ -4,99 +4,105 @@
 
 @layer base {
   :root, .light {
-    /* Sunset Amber & Bronze Palette - Light Mode */
-    --background: 36 30% 98%;           /* #FAF7F2 - warm parchment mist */
-    --foreground: 24 35% 12%;           /* #28180E - deep espresso mahogany */
+    /* River Mist (Light Mode) - Forest + River Theme */
+    --background: 140 20% 98%;           /* #F6FAF7 - Off-white river mist */
+    --foreground: 155 45% 8%;            /* #07170E - Forest Black text */
 
-    --card: 0 0% 100%;                  /* #FFFFFF - crisp white */
-    --card-foreground: 24 35% 12%;
+    --card: 0 0% 100%;                  /* #FFFFFF - Crisp white */
+    --card-foreground: 155 45% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 24 35% 12%;
+    --popover-foreground: 155 45% 8%;
 
-    --primary: 36 95% 50%;              /* #F59E0B - vibrant sunset amber */
+    --primary: 155 75% 35%;             /* #059669 - Rich Forest Emerald */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 35 25% 94%;            /* #F5EFE6 - soft warm sand */
-    --secondary-foreground: 24 35% 18%;
+    --secondary: 150 22% 93%;           /* #EBF2EC - Soft Moss */
+    --secondary-foreground: 155 45% 12%;
 
-    --muted: 35 20% 92%;                /* #EFE8DD */
-    --muted-foreground: 24 15% 42%;     /* #786455 - warm bronze stone */
+    --muted: 150 16% 92%;               /* #E7EFE9 */
+    --muted-foreground: 155 18% 40%;    /* #536E5C - Deep Green Stone */
 
-    --accent: 38 85% 94%;               /* #FEF3C7 - warm amber glow tint */
-    --accent-foreground: 24 85% 24%;
+    --accent: 175 60% 92%;              /* #CCFBF1 - River Teal Shimmer */
+    --accent-foreground: 175 80% 24%;   /* #0F766E - Teal Stream */
 
-    --destructive: 0 75% 55%;           /* #E11D48 - organic rose */
+    --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 35 20% 88%;               /* #E5DDD0 - soft warm parchment border */
-    --input: 35 20% 88%;
-    --ring: 36 95% 50%;
+    --border: 150 18% 87%;              /* #D3E0D6 - Lichen Border */
+    --input: 150 18% 87%;
+    --ring: 175 75% 42%;                /* #14B8A6 - River Teal ring */
 
     --radius: 0.65rem;
 
-    --sidebar-background: 36 25% 96%;   /* #F7F3EC */
-    --sidebar-foreground: 24 35% 14%;
-    --sidebar-border: 35 20% 88%;
-    --sidebar-accent: 38 70% 92%;
+    --sidebar-background: 145 20% 96%;  /* #F2F7F3 */
+    --sidebar-foreground: 155 45% 10%;
+    --sidebar-border: 150 18% 88%;
+    --sidebar-accent: 175 45% 91%;
 
     /* Custom surface tokens */
-    --surface-base: #FAF7F2;
+    --surface-base: #F6FAF7;
     --surface-elevated: #FFFFFF;
-    --surface-subtle: #F4EFE6;
-    --border-base: #E5DDD0;
-    --border-hover: #D5C9B8;
-    --content-primary: #28180E;
-    --content-secondary: #4A3324;
-    --content-muted: #7E6756;
+    --surface-subtle: #EEF5F0;
+    --border-base: #D3E0D6;
+    --border-hover: #B8CCBC;
+    --content-primary: #07170E;
+    --content-secondary: #1F3827;
+    --content-muted: #536E5C;
+
+    --river-teal: #0D9488;
+    --river-blue: #0284C7;
   }
 
   .dark {
-    /* Sunset Amber & Bronze Palette - Dark Mode */
-    --background: 24 22% 8%;            /* #16100C - dark mahogany obsidian */
-    --foreground: 35 28% 92%;           /* #F6EFE6 - warm silk mist */
+    /* Forest Black (Dark Mode) - Forest + River Theme */
+    --background: 145 35% 4%;            /* #060A07 - Forest Black */
+    --foreground: 140 20% 95%;           /* #F1F6F2 - Off-white river mist */
 
-    --card: 24 20% 11%;                 /* #1E1611 - mahogany card */
-    --card-foreground: 35 28% 92%;
+    --card: 146 30% 7%;                 /* #0A140D - Deep Green Card */
+    --card-foreground: 140 20% 95%;
 
-    --popover: 24 20% 10%;
-    --popover-foreground: 35 28% 92%;
+    --popover: 146 30% 6%;
+    --popover-foreground: 140 20% 95%;
 
-    --primary: 36 95% 52%;              /* #F59E0B - glowing sunset amber */
-    --primary-foreground: 24 35% 10%;
+    --primary: 152 75% 46%;             /* #10B981 - Glowing Emerald Foliage */
+    --primary-foreground: 145 35% 4%;
 
-    --secondary: 24 18% 16%;            /* #2A1F18 */
-    --secondary-foreground: 35 28% 92%;
+    --secondary: 150 25% 12%;           /* #122418 - Deep Pine */
+    --secondary-foreground: 140 20% 95%;
 
-    --muted: 24 16% 15%;                /* #261B14 */
-    --muted-foreground: 30 15% 64%;     /* #A8988B - warm stone bronze */
+    --muted: 150 20% 10%;               /* #0F1D14 */
+    --muted-foreground: 150 14% 62%;    /* #8EA594 - Lichen Stone */
 
-    --accent: 28 35% 18%;               /* #362417 */
-    --accent-foreground: 36 95% 65%;
+    --accent: 175 60% 14%;              /* #0E2E2A - River Estuary */
+    --accent-foreground: 175 80% 60%;   /* #2DD4BF - Bioluminescent River Teal */
 
     --destructive: 0 65% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 24 18% 19%;               /* #2F2119 - dark bronze border */
-    --input: 24 18% 19%;
-    --ring: 36 95% 52%;
+    --border: 150 20% 14%;              /* #182B1E - Deep Pine Border */
+    --input: 150 20% 14%;
+    --ring: 175 75% 46%;                /* #14B8A6 - River Teal */
 
     --radius: 0.65rem;
 
-    --sidebar-background: 24 24% 9%;    /* #18110D */
-    --sidebar-foreground: 35 28% 92%;
-    --sidebar-border: 24 18% 18%;
-    --sidebar-accent: 28 30% 16%;
+    --sidebar-background: 145 35% 5%;   /* #070D08 - Forest Black */
+    --sidebar-foreground: 140 20% 95%;
+    --sidebar-border: 150 20% 13%;
+    --sidebar-accent: 175 40% 12%;
 
     /* Custom surface tokens in Dark Mode */
-    --surface-base: #16100C;
-    --surface-elevated: #1E1611;
-    --surface-subtle: #251B14;
-    --border-base: #2F2119;
-    --border-hover: #453226;
-    --content-primary: #F6EFE6;
-    --content-secondary: #D4BEAD;
-    --content-muted: #9E8877;
+    --surface-base: #060A07;            /* Forest Black */
+    --surface-elevated: #0A140D;        /* Deep Green */
+    --surface-subtle: #101E14;          /* Pine Bark */
+    --border-base: #182B1E;
+    --border-hover: #26422F;
+    --content-primary: #F1F6F2;         /* Off-white */
+    --content-secondary: #A7C2AE;       /* Soft Sage */
+    --content-muted: #728E79;
+
+    --river-teal: #14B8A6;
+    --river-blue: #38BDF8;
   }
 }
 
@@ -110,7 +116,7 @@
   }
 }
 
-/* Custom warm bronze scrollbars */
+/* Custom Forest & River scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -121,16 +127,42 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-base, #E5DDD0);
+  background: var(--border-base, #182B1E);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--border-hover, #D5C9B8);
+  background: var(--border-hover, #26422F);
 }
 
-/* Sunset amber selection & highlights */
+/* Emerald foliage selection & highlights */
 ::selection {
-  background: rgba(245, 158, 11, 0.3);
+  background: rgba(16, 185, 129, 0.28);
   color: inherit;
+}
+
+/* River Data Flow: Subtle flowing animation representing data moving through the system */
+@keyframes riverStreamFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.river-stream-gradient {
+  background: linear-gradient(90deg, #10B981, #14B8A6, #38BDF8, #10B981);
+  background-size: 300% 100%;
+  animation: riverStreamFlow 8s ease infinite;
+}
+
+.river-stream-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #10B981 25%, #14B8A6 50%, #38BDF8 75%, transparent);
+  background-size: 200% 100%;
+  animation: riverStreamFlow 6s linear infinite;
 }

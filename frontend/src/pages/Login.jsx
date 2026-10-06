@@ -48,14 +48,14 @@ export const Login = () => {
       <div className="w-full max-w-sm">
         {/* Brand */}
         <div className="flex flex-col items-center text-center mb-8">
-          <Link to="/" className="mb-4 hover:opacity-90 transition-opacity">
+          <Link to="/" className="mb-3 hover:opacity-90 transition-opacity">
             <CanopyLogo size="lg" showText={false} />
           </Link>
           <h2 className="text-2xl font-extrabold tracking-tight text-content-primary">
             Sign in to Canopy AI
           </h2>
-          <p className="text-xs text-content-secondary mt-1">
-            AI Codebase Intelligence Platform
+          <p className="text-xs text-content-secondary mt-1 font-medium">
+            Understand your codebase. Not just your code.
           </p>
         </div>
 

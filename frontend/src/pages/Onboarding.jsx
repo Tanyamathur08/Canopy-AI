@@ -56,8 +56,8 @@ export const Onboarding = () => {
           <h2 className="text-2xl font-extrabold tracking-tight text-content-primary">
             Welcome to Canopy AI
           </h2>
-          <p className="text-xs text-content-secondary mt-1">
-            Step {step} of 3 — Cultivate Your Codebase Ecosystem
+          <p className="text-xs text-content-secondary mt-1 font-medium">
+            Step {step} of 3 — Understand your codebase. Not just your code.
           </p>
 
           <div className="flex items-center gap-2 mt-4">
