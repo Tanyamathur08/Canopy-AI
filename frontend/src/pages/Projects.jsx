@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import {
   FolderGit2,
@@ -158,9 +159,16 @@ export const Projects = () => {
       </div>
 
       {/* New Project Modal */}
-      {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-150">
-          <div className="w-full max-w-md rounded-2xl bg-card border border-border shadow-2xl p-6 relative animate-in zoom-in-95 duration-150">
+      {modalOpen && typeof document !== "undefined" &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-150 overflow-y-auto"
+            onClick={() => setModalOpen(false)}
+          >
+            <div
+              className="w-full max-w-md rounded-2xl bg-card border border-border shadow-2xl p-6 relative animate-in zoom-in-95 duration-150 my-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
             <button
               onClick={() => setModalOpen(false)}
               className="absolute right-4 top-4 p-1 rounded-md text-muted-foreground hover:text-foreground"
@@ -251,7 +259,8 @@ export const Projects = () => {
               </div>
             </form>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       <UploadProjectModal

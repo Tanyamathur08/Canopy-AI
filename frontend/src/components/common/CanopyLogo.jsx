@@ -4,7 +4,7 @@ export const CanopyLogo = ({ size = "md", showText = true, className = "" }) => 
   const getDimensions = () => {
     switch (size) {
       case "sm":
-        return { icon: 26, text: "text-sm", sub: "text-[9px]" };
+        return { icon: 28, text: "text-sm", sub: "text-[9px]" };
       case "lg":
         return { icon: 42, text: "text-xl", sub: "text-xs" };
       case "xl":
@@ -18,7 +18,7 @@ export const CanopyLogo = ({ size = "md", showText = true, className = "" }) => 
   const dim = getDimensions();
 
   return (
-    <div className={`flex items-center gap-2.5 ${className}`}>
+    <div className={`flex items-center ${showText ? "gap-2.5" : ""} ${className}`}>
       {/* Exact Canopy Tree Network Constellation Mark */}
       <div className="relative shrink-0 flex items-center justify-center">
         <svg

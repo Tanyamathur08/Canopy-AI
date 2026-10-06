@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import {
   Search,
@@ -32,7 +33,7 @@ export const CommandPalette = ({ isOpen, onClose }) => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  if (!isOpen || typeof document === "undefined") return null;
 
   const actions = [
     { title: "Ask AI Assistant", desc: "Interact with the LangGraph codebase agent", icon: BotMessageSquare, path: `/projects/${pid}/chat` },
@@ -50,10 +51,13 @@ export const CommandPalette = ({ isOpen, onClose }) => {
     a.desc.toLowerCase().includes(query.toLowerCase())
   );
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[100] flex items-start justify-center pt-24 p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200 overflow-y-auto"
+      onClick={onClose}
+    >
       <div
-        className="w-full max-w-xl bg-card border border-border rounded-xl shadow-2xl overflow-hidden"
+        className="w-full max-w-xl bg-card border border-border rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-150"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center px-4 border-b border-border">
@@ -66,7 +70,7 @@ export const CommandPalette = ({ isOpen, onClose }) => {
             placeholder="Type a command or search codebase... (Esc to close)"
             className="w-full py-3.5 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
           />
-          <button onClick={onClose} className="p-1 text-muted-foreground hover:text-foreground">
+          <button onClick={onClose} className="p-1 text-muted-foreground hover:text-foreground cursor-pointer">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -86,7 +90,7 @@ export const CommandPalette = ({ isOpen, onClose }) => {
                     navigate(action.path);
                     onClose();
                   }}
-                  className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left hover:bg-accent/60 transition-colors group"
+                  className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left hover:bg-accent/60 transition-colors group cursor-pointer"
                 >
                   <div className="p-2 rounded-md bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0">
                     <Icon className="w-4 h-4" />
@@ -113,7 +117,8 @@ export const CommandPalette = ({ isOpen, onClose }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

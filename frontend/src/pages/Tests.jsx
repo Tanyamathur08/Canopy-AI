@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useParams } from "react-router-dom";
 import { useProject } from "../contexts/ProjectContext";
 import apiClient from "../api/client";
@@ -512,9 +513,19 @@ tests/test_auth.py::test_user_authentication PASSED                      [100%]
       </div>
 
       {/* AI Test Generation Modal */}
-      {isGenModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div className="bg-surface-elevated border border-border-base rounded-xl shadow-2xl max-w-2xl w-full flex flex-col max-h-[85vh] overflow-hidden">
+      {isGenModalOpen && typeof document !== "undefined" &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 overflow-y-auto"
+            onClick={() => {
+              setIsGenModalOpen(false);
+              setGeneratedResult(null);
+            }}
+          >
+            <div
+              className="bg-surface-elevated border border-border-base rounded-xl shadow-2xl max-w-2xl w-full flex flex-col max-h-[85vh] overflow-hidden my-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
             {/* Modal Header */}
             <div className="px-5 py-4 border-b border-border-base flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -604,7 +615,8 @@ tests/test_auth.py::test_user_authentication PASSED                      [100%]
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

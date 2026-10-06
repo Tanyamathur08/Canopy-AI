@@ -48,17 +48,42 @@ export const Sidebar = () => {
       )}
     >
       {/* Brand Header */}
-      <div className="flex items-center justify-between h-14 px-3.5 border-b border-sidebar-border bg-sidebar">
-        <Link to="/" className="flex items-center overflow-hidden">
+      <div
+        className={cn(
+          "h-14 border-b border-sidebar-border bg-sidebar flex items-center transition-all relative",
+          collapsed ? "justify-center px-2" : "justify-between px-3.5"
+        )}
+      >
+        <Link
+          to="/"
+          className={cn(
+            "flex items-center transition-all",
+            collapsed ? "justify-center" : "overflow-hidden"
+          )}
+          title="Canopy AI Home"
+        >
           <CanopyLogo size={collapsed ? "sm" : "md"} showText={!collapsed} />
         </Link>
-        <button
-          onClick={() => setCollapsed(!collapsed)}
-          className="p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-          title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-        >
-          {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
-        </button>
+
+        {collapsed ? (
+          <button
+            onClick={() => setCollapsed(false)}
+            className="absolute -right-3 top-4 w-6 h-6 rounded-full bg-surface-elevated border border-border shadow-md flex items-center justify-center text-content-muted hover:text-content-primary hover:bg-surface-subtle transition-all cursor-pointer z-40"
+            title="Expand sidebar"
+            aria-label="Expand sidebar"
+          >
+            <ChevronRight className="w-3.5 h-3.5" />
+          </button>
+        ) : (
+          <button
+            onClick={() => setCollapsed(true)}
+            className="p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+            title="Collapse sidebar"
+            aria-label="Collapse sidebar"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+        )}
       </div>
 
       {/* Nav List */}
@@ -73,6 +98,7 @@ export const Sidebar = () => {
               title={collapsed ? item.label : undefined}
               className={cn(
                 "flex items-center gap-3 px-3 py-2 rounded-md text-xs font-medium transition-all group",
+                collapsed && "justify-center px-2",
                 isActive
                   ? "bg-primary/15 text-primary border border-primary/25 shadow-sm font-semibold"
                   : "text-muted-foreground hover:text-foreground hover:bg-accent/40"
@@ -100,16 +126,19 @@ export const Sidebar = () => {
       )}
 
       {/* User Footer */}
-      <div className="p-3 border-t border-sidebar-border bg-sidebar/50">
-        <div className="flex items-center justify-between">
+      <div className={cn("border-t border-sidebar-border bg-sidebar/50", collapsed ? "p-2.5 flex justify-center" : "p-3")}>
+        <div className={cn("flex items-center", collapsed ? "justify-center" : "justify-between w-full")}>
           <div className="flex items-center gap-2.5 overflow-hidden">
-            <div className="w-8 h-8 rounded-full bg-muted border border-border flex items-center justify-center text-xs font-semibold text-foreground shrink-0">
+            <div
+              className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-500/30 flex items-center justify-center text-xs font-semibold text-emerald-800 dark:text-emerald-300 shrink-0"
+              title={user?.full_name || "Developer"}
+            >
               {user?.full_name ? user.full_name[0].toUpperCase() : "D"}
             </div>
             {!collapsed && (
               <div className="flex flex-col min-w-0">
                 <span className="text-xs font-medium text-foreground truncate">{user?.full_name || "Developer"}</span>
-                <span className="text-[10px] text-muted-foreground truncate">{user?.email || "demo@codemind.ai"}</span>
+                <span className="text-[10px] text-muted-foreground truncate">{user?.email || "demo@canopy.ai"}</span>
               </div>
             )}
           </div>
@@ -117,7 +146,7 @@ export const Sidebar = () => {
             <button
               onClick={logout}
               title="Sign Out"
-              className="p-1.5 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded transition-colors"
+              className="p-1.5 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded transition-colors cursor-pointer"
             >
               <LogOut className="w-3.5 h-3.5" />
             </button>
