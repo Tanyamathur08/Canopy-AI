@@ -15,10 +15,7 @@ import {
   Leaf,
   Layers,
   ShieldAlert,
-  GitBranch,
-  Trees,
-  Waves,
-  Boxes
+  GitBranch
 } from "lucide-react";
 import { useAuth } from "../contexts/AuthContext";
 import { useProject } from "../contexts/ProjectContext";
@@ -44,10 +41,9 @@ export const Landing = () => {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 text-xs font-semibold text-content-secondary">
-          <a href="#ecosystem" className="hover:text-primary transition-colors">Ecosystem Architecture</a>
           <a href="#features" className="hover:text-primary transition-colors">Features</a>
-          <a href="#how-it-works" className="hover:text-primary transition-colors">How It Grows</a>
-          <a href="#technology" className="hover:text-primary transition-colors">Stack</a>
+          <a href="#how-it-works" className="hover:text-primary transition-colors">How It Works</a>
+          <a href="#technology" className="hover:text-primary transition-colors">Architecture</a>
           <Link to="/login" className="hover:text-primary transition-colors">Sign In</Link>
         </nav>
 
@@ -85,17 +81,11 @@ export const Landing = () => {
         </h1>
 
         <p className="mt-5 text-base sm:text-lg text-content-secondary max-w-2xl leading-relaxed font-normal">
-          Canopy AI transforms software comprehension through a natural ecosystem metaphor: mapping your whole <strong>Forest</strong> codebase, tracing fluid <strong>River</strong> data flows, inspecting <strong>Branch</strong> dependencies, and isolating <strong>Node</strong> components.
+          From git commit roots to branching code canopies, <strong>Canopy AI</strong> weaves semantic AST retrieval, knowledge graphs, and agent reasoning into a unified, high-velocity developer experience.
         </p>
 
-        {/* Subtle Flowing River Stream Line representing data moving through the system */}
-        <div className="w-full max-w-xl my-7 relative flex items-center justify-center">
-          <div className="w-full river-stream-line rounded-full opacity-80" />
-          <span className="absolute px-3.5 py-0.5 rounded-full text-[10px] font-mono font-medium tracking-wide bg-surface-elevated text-teal-600 dark:text-teal-300 border border-teal-500/30 shadow-xs flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
-            <span>River Data Stream Flow</span>
-          </span>
-        </div>
+        {/* Subtle Flowing Line representing data moving through the system */}
+        <div className="w-full max-w-md my-6 river-stream-line rounded-full opacity-60" />
 
         <div className="mt-2 flex flex-wrap items-center justify-center gap-4">
           <Link
@@ -197,116 +187,6 @@ export const Landing = () => {
               </div>
               <div className="text-[11px] text-content-muted font-sans italic border-t border-emerald-200 dark:border-emerald-800/40 pt-2">
                 "Token verification uses standard HMAC-SHA256 with 2-level dependency callers in UserService."
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Forest + River Natural Ecosystem Section */}
-      <section id="ecosystem" className="py-20 border-t border-border bg-surface-subtle/30 px-6 relative overflow-hidden">
-        {/* Subtle Ambient River Stream Line Accent across section */}
-        <div className="absolute top-0 left-0 right-0 h-[1.5px] river-stream-line opacity-50" />
-
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-700 dark:text-teal-300 text-2xs font-mono font-semibold uppercase tracking-wider mb-3">
-              <Waves className="w-3 h-3 text-teal-500 animate-pulse" />
-              <span>Natural Ecosystem Metaphor</span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-content-primary">
-              Forest + River Architecture
-            </h2>
-            <p className="mt-3 text-sm sm:text-base text-content-secondary leading-relaxed">
-              Instead of treating software as isolated static text, Canopy AI models your codebase as a living natural ecosystem.
-            </p>
-          </div>
-
-          {/* 4 Ecosystem Pillars */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {/* 1. Forest = Codebase */}
-            <div className="p-6 rounded-2xl border border-border bg-surface-elevated hover:border-emerald-500/50 hover:shadow-lg transition-all flex flex-col justify-between group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-xl pointer-events-none" />
-              <div>
-                <div className="w-11 h-11 rounded-xl bg-forest-card border border-emerald-900/40 dark:border-emerald-500/30 flex items-center justify-center text-emerald-500 mb-4 group-hover:scale-105 transition-transform shadow-xs">
-                  <Trees className="w-5 h-5 text-emerald-400" />
-                </div>
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="text-xs font-mono font-bold text-emerald-500">01</span>
-                  <h3 className="font-bold text-base text-content-primary">Forest = Codebase</h3>
-                </div>
-                <p className="text-xs text-content-secondary leading-relaxed mt-2">
-                  The entire repository landscape. Structural directory roots, deep architectural topography, and global multi-module comprehension across commits.
-                </p>
-              </div>
-              <div className="mt-5 pt-3 border-t border-border/60 flex items-center justify-between text-[11px] font-mono text-content-muted">
-                <span>Domain</span>
-                <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Living Repository</span>
-              </div>
-            </div>
-
-            {/* 2. River = Data Flow */}
-            <div className="p-6 rounded-2xl border border-teal-500/30 bg-surface-elevated hover:border-teal-400 hover:shadow-lg transition-all flex flex-col justify-between group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-teal-500/10 rounded-full blur-xl pointer-events-none" />
-              <div>
-                <div className="w-11 h-11 rounded-xl bg-forest-card border border-teal-900/40 dark:border-teal-500/30 flex items-center justify-center text-teal-400 mb-4 group-hover:scale-105 transition-transform shadow-xs">
-                  <Waves className="w-5 h-5 text-teal-400" />
-                </div>
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="text-xs font-mono font-bold text-teal-400">02</span>
-                  <h3 className="font-bold text-base text-content-primary">River = Data Flow</h3>
-                </div>
-                <p className="text-xs text-content-secondary leading-relaxed mt-2">
-                  Subtle flowing currents representing data moving through the system. Tracing HTTP requests, payloads, event buses, and asynchronous state streams.
-                </p>
-                {/* Embedded flowing river line animation */}
-                <div className="mt-3 w-full river-stream-line rounded-full opacity-80" />
-              </div>
-              <div className="mt-5 pt-3 border-t border-border/60 flex items-center justify-between text-[11px] font-mono text-content-muted">
-                <span>Current</span>
-                <span className="text-teal-600 dark:text-teal-400 font-semibold">Active Stream</span>
-              </div>
-            </div>
-
-            {/* 3. Branches = Dependencies */}
-            <div className="p-6 rounded-2xl border border-border bg-surface-elevated hover:border-emerald-500/50 hover:shadow-lg transition-all flex flex-col justify-between group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-xl pointer-events-none" />
-              <div>
-                <div className="w-11 h-11 rounded-xl bg-forest-card border border-emerald-900/40 dark:border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4 group-hover:scale-105 transition-transform shadow-xs">
-                  <GitBranch className="w-5 h-5 text-emerald-400" />
-                </div>
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="text-xs font-mono font-bold text-emerald-500">03</span>
-                  <h3 className="font-bold text-base text-content-primary">Branches = Dependencies</h3>
-                </div>
-                <p className="text-xs text-content-secondary leading-relaxed mt-2">
-                  Multi-level Abstract Syntax Tree (AST) call graphs, caller/callee links, and blast-radius vectors radiating through architectural layers.
-                </p>
-              </div>
-              <div className="mt-5 pt-3 border-t border-border/60 flex items-center justify-between text-[11px] font-mono text-content-muted">
-                <span>Structure</span>
-                <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Deterministic Graph</span>
-              </div>
-            </div>
-
-            {/* 4. Nodes = Components */}
-            <div className="p-6 rounded-2xl border border-border bg-surface-elevated hover:border-sky-500/50 hover:shadow-lg transition-all flex flex-col justify-between group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-sky-500/5 rounded-full blur-xl pointer-events-none" />
-              <div>
-                <div className="w-11 h-11 rounded-xl bg-forest-card border border-sky-900/40 dark:border-sky-500/30 flex items-center justify-center text-sky-400 mb-4 group-hover:scale-105 transition-transform shadow-xs">
-                  <Boxes className="w-5 h-5 text-sky-400" />
-                </div>
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="text-xs font-mono font-bold text-sky-400">04</span>
-                  <h3 className="font-bold text-base text-content-primary">Nodes = Components</h3>
-                </div>
-                <p className="text-xs text-content-secondary leading-relaxed mt-2">
-                  Discrete living components: functions, classes, routes, models, and microservice modules anchored cleanly in vector and graph stores.
-                </p>
-              </div>
-              <div className="mt-5 pt-3 border-t border-border/60 flex items-center justify-between text-[11px] font-mono text-content-muted">
-                <span>Entities</span>
-                <span className="text-sky-600 dark:text-sky-400 font-semibold">Modular Units</span>
               </div>
             </div>
           </div>

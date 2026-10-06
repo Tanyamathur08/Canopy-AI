@@ -51,12 +51,12 @@ export const CanopyLogo = ({ size = "md", showText = true, className = "" }) => 
             </filter>
           </defs>
 
-          {/* Deep Forest Black Badge Background */}
-          <rect width="100" height="100" rx="26" fill="#060A07" stroke="#182B1E" strokeWidth="2" />
+          {/* Deep Forest Black Badge Background (Circle) */}
+          <circle cx="50" cy="50" r="48" fill="#060A07" stroke="#182B1E" strokeWidth="2" />
 
           {/* Subtle River Current Wave Accent at Base */}
           <path
-            d="M20 90 Q50 86 80 90"
+            d="M 24 84 Q 50 80 76 84"
             stroke="#14B8A6"
             strokeWidth="1.2"
             strokeOpacity="0.3"
