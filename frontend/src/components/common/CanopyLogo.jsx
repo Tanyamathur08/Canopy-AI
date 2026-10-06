@@ -19,7 +19,7 @@ export const CanopyLogo = ({ size = "md", showText = true, className = "" }) => 
 
   return (
     <div className={`flex items-center gap-2.5 ${className}`}>
-      {/* Code Branching Canopy Mark */}
+      {/* Sleek Modern Monogram 'C' Mark */}
       <div className="relative shrink-0 flex items-center justify-center">
         <svg
           width={dim.icon}
@@ -30,98 +30,67 @@ export const CanopyLogo = ({ size = "md", showText = true, className = "" }) => 
           className="transition-transform duration-300 hover:scale-105"
         >
           <defs>
-            {/* Radiant Sunset Amber Gradient */}
-            <linearGradient id="canopyAmberGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#EA580C" />
-              <stop offset="50%" stopColor="#F59E0B" />
-              <stop offset="100%" stopColor="#FDE047" />
+            {/* Radiant Sunset Copper to Golden Amber Gradient */}
+            <linearGradient id="monogramRibbon" x1="15%" y1="0%" x2="85%" y2="100%">
+              <stop offset="0%" stopColor="#FDE047" />
+              <stop offset="40%" stopColor="#F59E0B" />
+              <stop offset="100%" stopColor="#EA580C" />
             </linearGradient>
 
-            {/* Warm Copper Bronze Gradient */}
-            <linearGradient id="canopyBronzeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#F59E0B" />
-              <stop offset="100%" stopColor="#B45309" />
+            {/* Inner Depth Ribbon Gradient */}
+            <linearGradient id="monogramDepth" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#C2410C" />
+              <stop offset="60%" stopColor="#EA580C" />
+              <stop offset="100%" stopColor="#F59E0B" />
             </linearGradient>
 
-            {/* Deep Mahogany Badge Gradient */}
-            <linearGradient id="canopyBadgeBg" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#26170F" />
-              <stop offset="100%" stopColor="#140C08" />
+            {/* Deep Mahogany Badge Base */}
+            <linearGradient id="monogramBadgeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#24150D" />
+              <stop offset="100%" stopColor="#130B07" />
             </linearGradient>
 
-            {/* Subtle glow filter */}
-            <filter id="canopyAmberGlow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="1.2" result="blur" />
+            {/* Radiant Amber Glow */}
+            <filter id="monogramGlow" x="-25%" y="-25%" width="150%" height="150%">
+              <feGaussianBlur stdDeviation="1.5" result="blur" />
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
           </defs>
 
-          {/* Mahogany Badge with Warm Bronze Border */}
-          <rect width="48" height="48" rx="14" fill="url(#canopyBadgeBg)" stroke="#F59E0B" strokeWidth="1.2" strokeOpacity="0.35" />
+          {/* Premium Mahogany Emblem Shield with Warm Bronze Border */}
+          <rect width="48" height="48" rx="14" fill="url(#monogramBadgeBg)" stroke="#F59E0B" strokeWidth="1.2" strokeOpacity="0.35" />
 
-          {/* Root Git Trunk */}
+          {/* Ambient Core Halo */}
+          <circle cx="24" cy="24" r="14" fill="#F59E0B" opacity="0.08" filter="url(#monogramGlow)" />
+
+          {/* Primary Monogram 'C' Continuous Ribbon */}
           <path
-            d="M24 39V25"
-            stroke="url(#canopyBronzeGrad)"
-            strokeWidth="2.4"
+            d="M34.5 34 C29 39 19 39.5 13.8 33.5 C9.2 28.2 9.2 19.8 13.8 14.5 C19 8.5 29 9 34.5 14"
+            stroke="url(#monogramRibbon)"
+            strokeWidth="4.8"
             strokeLinecap="round"
           />
 
-          {/* Left Branching Commit Pathway into Foliage */}
+          {/* Inner Dimensional Canopy Crest */}
           <path
-            d="M24 32C19 32 14 30 14 24V18C14 15 17 12 21 11"
-            stroke="url(#canopyAmberGrad)"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-
-          {/* Right Branching Commit Pathway into Foliage */}
-          <path
-            d="M24 32C29 32 34 30 34 24V18C34 15 31 12 27 11"
-            stroke="url(#canopyAmberGrad)"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-
-          {/* Central Apex Trunk */}
-          <path
-            d="M24 25V12"
-            stroke="url(#canopyAmberGrad)"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-
-          {/* Secondary Delicate Branch Connectors */}
-          <path
-            d="M14 21L19 16M34 21L29 16"
-            stroke="#D97706"
-            strokeWidth="1.5"
+            d="M31.5 16 C27.2 12.2 20 12.8 16 16.5 C12.8 20 12.8 28 16 31.5 C20 35.2 27.2 35.8 31.5 32"
+            stroke="url(#monogramDepth)"
+            strokeWidth="1.8"
             strokeLinecap="round"
             strokeOpacity="0.75"
           />
 
-          {/* Git Commit Nodes — Code Base & Trunk */}
-          <circle cx="24" cy="38" r="3" fill="#EA580C" stroke="#FDE047" strokeWidth="1.2" />
-          <circle cx="24" cy="28" r="2.2" fill="#F59E0B" />
+          {/* Central AI Quantum Spark (Nested inside the 'C' curvature) */}
+          <path
+            d="M27.5 19.5 Q27.5 24 32 24 Q27.5 24 27.5 28.5 Q27.5 24 23 24 Q27.5 24 27.5 19.5 Z"
+            fill="#FDE047"
+            filter="url(#monogramGlow)"
+          />
+          {/* Precision Spark Core */}
+          <circle cx="27.5" cy="24" r="1.3" fill="#FFFFFF" />
 
-          {/* Branch Fork Nodes */}
-          <circle cx="14" cy="24" r="2.5" fill="#F59E0B" />
-          <circle cx="34" cy="24" r="2.5" fill="#F59E0B" />
-
-          {/* Mid-Level Canopy Nodes */}
-          <circle cx="14" cy="17" r="2.2" fill="#FDE047" />
-          <circle cx="34" cy="17" r="2.2" fill="#FDE047" />
-
-          {/* Crown Canopy Nodes (Glowing Leaves) */}
-          <circle cx="19" cy="12" r="2.8" fill="url(#canopyAmberGrad)" filter="url(#canopyAmberGlow)" />
-          <circle cx="29" cy="12" r="2.8" fill="url(#canopyAmberGrad)" filter="url(#canopyAmberGlow)" />
-
-          {/* Apex AI Core Node (Golden Pulsing Star) */}
-          <circle cx="24" cy="7.5" r="3.6" fill="#F59E0B" opacity="0.3" filter="url(#canopyAmberGlow)" />
-          <circle cx="24" cy="7.5" r="2.8" fill="#FDE047" filter="url(#canopyAmberGlow)" />
-          <circle cx="24" cy="7.5" r="1.2" fill="#FFFFFF" />
+          {/* Accent Micro-Orbit Synapse */}
+          <circle cx="34.5" cy="24" r="1.5" fill="#F59E0B" opacity="0.85" />
         </svg>
       </div>
 
