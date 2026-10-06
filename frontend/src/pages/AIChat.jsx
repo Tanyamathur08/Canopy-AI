@@ -12,7 +12,7 @@ import {
   Activity
 } from "lucide-react";
 import { useProject } from "../contexts/ProjectContext";
-import { api } from "../api/client";
+import { api, API_BASE } from "../api/client";
 
 export const AIChat = () => {
   const { activeProject, setActiveFilePath } = useProject();
@@ -116,7 +116,7 @@ export const AIChat = () => {
         headers["Authorization"] = `Bearer ${token}`;
       }
 
-      const response = await fetch(`http://localhost:8000/api/v1/projects/${pid}/chat/conversations/${targetConvId}/query`, {
+      const response = await fetch(`${API_BASE}/projects/${pid}/chat/conversations/${targetConvId}/query`, {
         method: "POST",
         headers,
         body: JSON.stringify({ message: text, stream: true })

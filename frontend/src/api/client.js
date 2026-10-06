@@ -3,11 +3,18 @@ import axios from "axios";
 const isDev = typeof window !== "undefined" && (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
 
 let rawBase = import.meta.env.VITE_API_BASE_URL;
+
+// If deployed on Render or cloud static hosting without explicit VITE_API_BASE_URL,
+// automatically connect to the live Canopy AI backend on Render:
+if (!rawBase && !isDev) {
+  rawBase = "https://canopy-ai-backend.onrender.com";
+}
+
 if (rawBase && !rawBase.startsWith("http://") && !rawBase.startsWith("https://") && !rawBase.startsWith("/")) {
   rawBase = `https://${rawBase}`;
 }
 
-const API_BASE = rawBase
+export const API_BASE = rawBase
   ? (rawBase.endsWith("/api/v1") ? rawBase : `${rawBase.replace(/\/$/, "")}/api/v1`)
   : (isDev && window.location.port !== "8000" ? "http://localhost:8000/api/v1" : "/api/v1");
 
