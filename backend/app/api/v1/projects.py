@@ -47,8 +47,16 @@ def create_project(
         # Trigger background indexing
         IndexingService.index_project(project.id, db)
     elif data.source_type == "GITHUB" and data.github_url:
-        RepositoryService.clone_github_repository(project, data.github_url, db=db)
-        IndexingService.index_project(project.id, db)
+        try:
+            RepositoryService.clone_github_repository(project, data.github_url, db=db)
+            IndexingService.index_project(project.id, db)
+        except Exception as err:
+            project.index_status = "FAILED"
+            db.commit()
+            raise HTTPException(
+                status_code=400,
+                detail=f"Failed to clone GitHub repository '{data.github_url}': {str(err)}"
+            )
 
     db.refresh(project)
     return project

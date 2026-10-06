@@ -53,7 +53,15 @@ def get_file_tree(
 
     repo_path = Path(project.repository.local_path).resolve()
     if not repo_path.exists():
-        raise HTTPException(status_code=404, detail="Repository path does not exist on disk")
+        from app.services.repository_service import RepositoryService
+        try:
+            RepositoryService.load_demo_repository(project, db)
+            repo_path = Path(project.repository.local_path).resolve()
+        except Exception:
+            pass
+
+    if not repo_path.exists():
+        return FileTreeNode(name=project.name, path="", type="directory", children=[])
 
     return build_tree(repo_path, repo_path)
 
@@ -69,11 +77,33 @@ def get_file_content(
         raise HTTPException(status_code=404, detail="Project repository not found")
 
     repo_path = Path(project.repository.local_path).resolve()
-    target_path = (repo_path / path).resolve()
+    if not repo_path.exists():
+        from app.services.repository_service import RepositoryService
+        try:
+            RepositoryService.load_demo_repository(project, db)
+            repo_path = Path(project.repository.local_path).resolve()
+        except Exception:
+            pass
+
+    # Normalize relative path: remove leading slashes and convert Windows backslashes
+    clean_path = path.lstrip("/\\").replace("\\", "/")
+    target_path = (repo_path / clean_path).resolve()
+
+    # If direct relative path doesn't exist, attempt fallback by file name inside repo
+    if not target_path.exists():
+        file_name = Path(clean_path).name
+        candidates = [c for c in repo_path.rglob(file_name) if c.is_file()]
+        if candidates:
+            target_path = candidates[0].resolve()
 
     # Path traversal protection
-    if not str(target_path).startswith(str(repo_path)) or not target_path.exists():
-        raise HTTPException(status_code=404, detail="File not found")
+    try:
+        target_path.relative_to(repo_path)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid path traversal")
+
+    if not target_path.exists() or not target_path.is_file():
+        raise HTTPException(status_code=404, detail=f"File '{clean_path}' not found")
 
     content = target_path.read_text(encoding="utf-8", errors="replace")
     ext = target_path.suffix.lstrip(".")
