@@ -1,29 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
   <defs>
-    <linearGradient id="leafGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#059669" />
-      <stop offset="60%" stop-color="#10B981" />
-      <stop offset="100%" stop-color="#34D399" />
+    <linearGradient id="favAmberGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EA580C" />
+      <stop offset="50%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#FDE047" />
     </linearGradient>
-    <linearGradient id="sunGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="favBronzeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#F59E0B" />
-      <stop offset="100%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+    <linearGradient id="favBadgeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#26170F" />
+      <stop offset="100%" stop-color="#140C08" />
     </linearGradient>
   </defs>
-  
-  <!-- Subtle circular nature background -->
-  <rect width="48" height="48" rx="12" fill="#EBF5ED" />
-  
-  <!-- Canopy Tree Trunk & Branches -->
-  <path d="M24 38V24M24 24L16 16M24 24L32 16M24 20L20 12M24 20L28 12" stroke="#047857" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-  
-  <!-- Sprout Leaves / AST Nodes -->
-  <circle cx="24" cy="10" r="4.5" fill="url(#leafGrad)" />
-  <circle cx="15" cy="15" r="4" fill="url(#leafGrad)" />
-  <circle cx="33" cy="15" r="4" fill="url(#leafGrad)" />
-  <circle cx="20" cy="12" r="3.2" fill="#34D399" />
-  <circle cx="28" cy="12" r="3.2" fill="#34D399" />
-  
-  <!-- Golden Sunlight Accent -->
-  <circle cx="35" cy="9" r="2.5" fill="url(#sunGrad)" />
+
+  <!-- Dark Mahogany Shield Badge -->
+  <rect width="48" height="48" rx="14" fill="url(#favBadgeBg)" stroke="#F59E0B" stroke-width="1.2" stroke-opacity="0.4" />
+
+  <!-- Root Trunk -->
+  <path d="M24 39V25" stroke="url(#favBronzeGrad)" stroke-width="2.4" stroke-linecap="round" />
+
+  <!-- Branching Pathways -->
+  <path d="M24 32C19 32 14 30 14 24V18C14 15 17 12 21 11" stroke="url(#favAmberGrad)" stroke-width="2" stroke-linecap="round" />
+  <path d="M24 32C29 32 34 30 34 24V18C34 15 31 12 27 11" stroke="url(#favAmberGrad)" stroke-width="2" stroke-linecap="round" />
+  <path d="M24 25V12" stroke="url(#favAmberGrad)" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Commit & Canopy Nodes -->
+  <circle cx="24" cy="38" r="3" fill="#EA580C" stroke="#FDE047" stroke-width="1.2" />
+  <circle cx="14" cy="24" r="2.5" fill="#F59E0B" />
+  <circle cx="34" cy="24" r="2.5" fill="#F59E0B" />
+  <circle cx="14" cy="17" r="2.2" fill="#FDE047" />
+  <circle cx="34" cy="17" r="2.2" fill="#FDE047" />
+  <circle cx="19" cy="12" r="2.8" fill="url(#favAmberGrad)" />
+  <circle cx="29" cy="12" r="2.8" fill="url(#favAmberGrad)" />
+
+  <!-- Apex AI Node -->
+  <circle cx="24" cy="7.5" r="3" fill="#FDE047" />
+  <circle cx="24" cy="7.5" r="1.2" fill="#FFFFFF" />
 </svg>

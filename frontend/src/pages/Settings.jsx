@@ -115,7 +115,7 @@ export default function Settings() {
             Interface Theme & Appearance
           </h2>
           <p className="text-xs text-content-muted mb-4">
-            Personalize your workspace palette. Choose between Nature-Inspired Bright Light mode or Nocturnal Forest Dark mode.
+            Personalize your workspace palette. Choose between Warm Parchment Light mode or Sunset Amber & Bronze Dark mode.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <button
@@ -123,22 +123,22 @@ export default function Settings() {
               onClick={() => setTheme("light")}
               className={`p-4 rounded-xl border text-left flex items-start gap-3.5 transition-all ${
                 theme === "light"
-                  ? "border-emerald-600 bg-emerald-500/10 shadow-sm ring-2 ring-emerald-500/20"
+                  ? "border-amber-600 bg-amber-500/10 shadow-sm ring-2 ring-amber-500/20"
                   : "border-border-base bg-surface-base hover:border-border-hover"
               }`}
             >
-              <div className="p-2.5 rounded-lg bg-emerald-100 text-emerald-800 shrink-0">
+              <div className="p-2.5 rounded-lg bg-amber-100 text-amber-800 shrink-0">
                 <Sun className="w-5 h-5" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-content-primary">Nature Bright (Light)</span>
+                  <span className="text-xs font-bold text-content-primary">Warm Parchment (Light)</span>
                   {theme === "light" && (
-                    <span className="px-2 py-0.5 rounded-full text-3xs font-semibold bg-emerald-600 text-white">Active</span>
+                    <span className="px-2 py-0.5 rounded-full text-3xs font-semibold bg-amber-600 text-white">Active</span>
                   )}
                 </div>
                 <p className="text-2xs text-content-muted mt-1 leading-relaxed">
-                  Crisp, sunny botanical theme with high-contrast emerald and sage accents. Perfect for bright ambient environments.
+                  Warm alabaster and sand palette with radiant copper and sunset amber accents. Soft on the eyes in daylight.
                 </p>
               </div>
             </button>
@@ -148,22 +148,22 @@ export default function Settings() {
               onClick={() => setTheme("dark")}
               className={`p-4 rounded-xl border text-left flex items-start gap-3.5 transition-all ${
                 theme === "dark"
-                  ? "border-emerald-500 bg-emerald-500/10 shadow-sm ring-2 ring-emerald-500/20"
+                  ? "border-amber-500 bg-amber-500/10 shadow-sm ring-2 ring-amber-500/20"
                   : "border-border-base bg-surface-base hover:border-border-hover"
               }`}
             >
-              <div className="p-2.5 rounded-lg bg-zinc-800 text-emerald-400 shrink-0">
+              <div className="p-2.5 rounded-lg bg-stone-900 text-amber-400 shrink-0">
                 <Moon className="w-5 h-5" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-content-primary">Nocturnal Forest (Dark)</span>
+                  <span className="text-xs font-bold text-content-primary">Sunset Amber & Bronze (Dark)</span>
                   {theme === "dark" && (
-                    <span className="px-2 py-0.5 rounded-full text-3xs font-semibold bg-emerald-600 text-white">Active</span>
+                    <span className="px-2 py-0.5 rounded-full text-3xs font-semibold bg-amber-600 text-white">Active</span>
                   )}
                 </div>
                 <p className="text-2xs text-content-muted mt-1 leading-relaxed">
-                  Deep obsidian and slate palette with bioluminescent leaf green highlights. Ideal for night-time development.
+                  Deep dark mahogany slate with radiant warm copper and golden amber illumination. Premium nocturnal development.
                 </p>
               </div>
             </button>

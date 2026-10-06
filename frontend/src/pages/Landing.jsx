@@ -33,7 +33,7 @@ export const Landing = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-emerald-500/20 selection:text-emerald-900">
+    <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-amber-500/20 selection:text-amber-900">
       {/* Top Navigation */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/85 border-b border-border/80 px-6 h-16 flex items-center justify-between shadow-xs">
         <Link to="/" className="flex items-center gap-2">
@@ -52,7 +52,7 @@ export const Landing = () => {
             onClick={handleLaunchDemo}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-surface-elevated hover:bg-surface-subtle text-xs font-medium text-content-primary transition-all shadow-xs"
           >
-            <Play className="w-3.5 h-3.5 text-emerald-600 fill-emerald-600" />
+            <Play className="w-3.5 h-3.5 text-amber-600 fill-amber-600" />
             <span>Launch Live Demo</span>
           </button>
           <Link
@@ -67,27 +67,27 @@ export const Landing = () => {
 
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 px-6 max-w-6xl mx-auto flex flex-col items-center text-center">
-        {/* Subtle Nature Sprout Pill */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-emerald-300 bg-emerald-50 text-emerald-800 text-xs font-semibold mb-6 shadow-2xs">
-          <Leaf className="w-3.5 h-3.5 text-emerald-600" />
-          <span>AI Codebase Intelligence & Agentic RAG Platform</span>
+        {/* Code Branching Canopy Pill */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-amber-300 dark:border-amber-600/40 bg-amber-50 dark:bg-amber-500/10 text-amber-800 dark:text-amber-300 text-xs font-semibold mb-6 shadow-2xs">
+          <GitBranch className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+          <span>AI Codebase Intelligence & Code Branching Architecture</span>
         </div>
 
         <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-content-primary max-w-4xl leading-[1.15]">
           Cultivate & Understand Any Codebase With{" "}
-          <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-green-700 bg-clip-text text-transparent">
-            AI Codebase Intelligence
+          <span className="bg-gradient-to-r from-amber-600 via-orange-600 to-amber-500 bg-clip-text text-transparent">
+            Canopy AI Intelligence
           </span>
         </h1>
 
         <p className="mt-5 text-base sm:text-lg text-content-secondary max-w-2xl leading-relaxed font-normal">
-          From root trunks to leafy function branches, <strong>Canopy AI</strong> weaves semantic AST retrieval, Neo4j dependency topologies, and LangGraph agent reasoning into a serene, high-yield developer ecosystem.
+          From git commit roots to branching code canopies, <strong>Canopy AI</strong> weaves semantic AST retrieval, knowledge graphs, and agent reasoning into a luminous, high-velocity developer ecosystem.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Link
             to="/register"
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-accent-hover text-white text-sm font-semibold shadow-md shadow-emerald-600/20 transition-all"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-accent-hover text-white text-sm font-semibold shadow-md shadow-amber-600/20 transition-all"
           >
             <span>Start Exploring Free</span>
             <ArrowRight className="w-4 h-4" />
@@ -96,7 +96,7 @@ export const Landing = () => {
             onClick={handleLaunchDemo}
             className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border bg-surface-elevated hover:bg-surface-subtle text-content-primary text-sm font-semibold transition-all shadow-xs"
           >
-            <Play className="w-4 h-4 text-emerald-600 fill-emerald-600" />
+            <Play className="w-4 h-4 text-amber-600 fill-amber-600" />
             <span>Explore Demo Microservice</span>
           </button>
         </div>

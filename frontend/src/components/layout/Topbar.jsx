@@ -59,14 +59,14 @@ export const Topbar = () => {
           )}
         </div>
 
-        {/* Center: Command Palette Trigger */}
+          {/* Center: Command Palette Trigger */}
         <div className="flex-1 max-w-md mx-6">
           <button
             onClick={() => setPaletteOpen(true)}
             className="w-full flex items-center justify-between px-3.5 py-1.5 rounded-lg border border-border bg-surface-base hover:bg-surface-subtle text-xs text-content-muted hover:text-content-primary transition-all shadow-2xs group"
           >
             <div className="flex items-center gap-2">
-              <Search className="w-3.5 h-3.5 text-content-muted group-hover:text-emerald-600 transition-colors" />
+              <Search className="w-3.5 h-3.5 text-content-muted group-hover:text-amber-500 transition-colors" />
               <span>Search repository, symbols, or ask AI...</span>
             </div>
             <kbd className="flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-surface-elevated border border-border text-[10px] font-mono text-content-muted shadow-2xs">
@@ -77,8 +77,8 @@ export const Topbar = () => {
 
         {/* Right: Operational Status, Theme Toggle & Avatar */}
         <div className="flex items-center gap-3">
-          <div className="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-[11px] font-semibold">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+          <div className="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-[11px] font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
             <span>Canopy RAG & Graph: Online</span>
           </div>
 
@@ -90,7 +90,7 @@ export const Topbar = () => {
             aria-label="Toggle theme"
           >
             {theme === "light" ? (
-              <Moon className="w-4 h-4 text-emerald-700" />
+              <Moon className="w-4 h-4 text-amber-700" />
             ) : (
               <Sun className="w-4 h-4 text-amber-400" />
             )}

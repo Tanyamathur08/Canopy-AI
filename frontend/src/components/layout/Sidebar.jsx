@@ -90,7 +90,7 @@ export const Sidebar = () => {
         <div className="mx-2 mb-3 p-2.5 rounded-lg bg-card/60 border border-border/60">
           <div className="flex items-center justify-between text-[11px] text-muted-foreground mb-1">
             <span className="flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
               Active Project
             </span>
             <span className="text-[10px] font-mono uppercase">{activeProject.primary_language || "python"}</span>
