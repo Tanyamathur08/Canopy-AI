@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
   FolderGit2,
@@ -23,8 +23,14 @@ import { cn } from "../../utils/cn";
 export const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { user, logout } = useAuth();
   const { activeProject } = useProject();
+
+  const handleLogout = (e) => {
+    if (e) e.preventDefault();
+    logout("/login");
+  };
 
   const pid = activeProject?.id || "demo-project-id";
 
@@ -126,8 +132,8 @@ export const Sidebar = () => {
       )}
 
       {/* User Footer */}
-      <div className={cn("border-t border-sidebar-border bg-sidebar/50", collapsed ? "p-2.5 flex justify-center" : "p-3")}>
-        <div className={cn("flex items-center", collapsed ? "justify-center" : "justify-between w-full")}>
+      <div className={cn("border-t border-sidebar-border bg-sidebar/50", collapsed ? "p-2 flex flex-col items-center gap-1.5" : "p-3")}>
+        <div className={cn("flex items-center", collapsed ? "flex-col gap-1.5 items-center justify-center" : "justify-between w-full")}>
           <div className="flex items-center gap-2.5 overflow-hidden">
             <div
               className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-500/30 flex items-center justify-center text-xs font-semibold text-emerald-800 dark:text-emerald-300 shrink-0"
@@ -142,11 +148,19 @@ export const Sidebar = () => {
               </div>
             )}
           </div>
-          {!collapsed && (
+          {!collapsed ? (
             <button
-              onClick={logout}
+              onClick={handleLogout}
               title="Sign Out"
-              className="p-1.5 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded transition-colors cursor-pointer"
+              className="p-1.5 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-md transition-colors cursor-pointer"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+            </button>
+          ) : (
+            <button
+              onClick={handleLogout}
+              title="Sign Out"
+              className="p-1 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-md transition-colors cursor-pointer"
             >
               <LogOut className="w-3.5 h-3.5" />
             </button>

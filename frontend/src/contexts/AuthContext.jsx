@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../api/client";
 
 const AuthContext = createContext(null);
@@ -6,20 +7,13 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMe = async () => {
-      const token = localStorage.getItem("codemind_access_token");
+      const token = localStorage.getItem("codemind_access_token") || localStorage.getItem("canopy_access_token");
       if (!token) {
-        // Fallback demo user for offline presentation
-        setUser({
-          id: "demo-user-id",
-          email: "demo@codemind.ai",
-          full_name: "Alex Rivera",
-          preferred_theme: "dark",
-          preferred_language: "python",
-          is_active: true
-        });
+        setUser(null);
         setIsLoading(false);
         return;
       }
@@ -29,8 +23,8 @@ export const AuthProvider = ({ children }) => {
       } catch {
         setUser({
           id: "demo-user-id",
-          email: "demo@codemind.ai",
-          full_name: "Alex Rivera",
+          email: "demo@canopy.ai",
+          full_name: "Developer",
           preferred_theme: "dark",
           preferred_language: "python",
           is_active: true
@@ -54,8 +48,8 @@ export const AuthProvider = ({ children }) => {
     } catch {
       setUser({
         id: "demo-user-id",
-        email: email || "demo@codemind.ai",
-        full_name: "Alex Rivera",
+        email: email || "demo@canopy.ai",
+        full_name: "Developer",
         preferred_theme: "dark",
         preferred_language: "python",
         is_active: true
@@ -77,7 +71,7 @@ export const AuthProvider = ({ children }) => {
       setUser({
         id: "new-user-id",
         email,
-        full_name: name,
+        full_name: name || "Developer",
         preferred_theme: "dark",
         preferred_language: "python",
         is_active: true
@@ -87,14 +81,19 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
+  const logout = (redirectTo = "/login") => {
     localStorage.removeItem("codemind_access_token");
     localStorage.removeItem("codemind_refresh_token");
+    localStorage.removeItem("canopy_access_token");
+    localStorage.removeItem("canopy_refresh_token");
     setUser(null);
+    if (redirectTo) {
+      navigate(redirectTo);
+    }
   };
 
   const quickFillDemo = async () => {
-    await login("demo@codemind.ai", "password123");
+    await login("demo@canopy.ai", "password123");
   };
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Search, Command, ChevronDown, Check, FolderGit2, Sun, Moon } from "lucide-react";
+import { Search, Command, ChevronDown, Check, FolderGit2, Sun, Moon, LogOut } from "lucide-react";
 import { useProject } from "../../contexts/ProjectContext";
 import { useAuth } from "../../contexts/AuthContext";
 import { useTheme } from "../../contexts/ThemeContext";
@@ -7,7 +7,7 @@ import { CommandPalette } from "./CommandPalette";
 
 export const Topbar = () => {
   const { projects, activeProject, setActiveProject } = useProject();
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -97,9 +97,20 @@ export const Topbar = () => {
           </button>
 
           <div className="flex items-center gap-2 pl-2 border-l border-border/80">
-            <div className="w-7 h-7 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-xs font-semibold text-primary">
-              {user?.full_name ? user.full_name[0].toUpperCase() : "A"}
+            <div
+              className="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-500/30 flex items-center justify-center text-xs font-semibold text-emerald-800 dark:text-emerald-300"
+              title={user?.full_name || "Developer"}
+            >
+              {user?.full_name ? user.full_name[0].toUpperCase() : "D"}
             </div>
+            <button
+              onClick={() => logout("/login")}
+              title="Sign Out"
+              aria-label="Sign Out"
+              className="p-1 rounded-md text-content-muted hover:text-destructive hover:bg-destructive/10 transition-colors cursor-pointer"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
       </header>
